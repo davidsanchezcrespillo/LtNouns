@@ -1,0 +1,21 @@
+{
+    "name": "lt-words/lt-nouns",
+    "description": "Generator of noun declensionss for the Lithuanian language",
+    "license": "MIT",
+    "keywords": ["Lithuanian"],
+    "authors": [
+        {
+            "name": "David Sanchez Crespillo",
+            "email": "davidsanchezcrespillo@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "4.0.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "LtWords\\LtNouns\\": "src"
+        }
+    }
+}
