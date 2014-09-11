@@ -38,6 +38,29 @@ class LtNounsTest extends PHPUnit_Framework_TestCase {
 	  $this->assertEquals('vyrais', $asDeclensions['plural']['kuo']);
 	  $this->assertEquals('vyrai', $asDeclensions['plural']['o']);
   }
-  
+
+  public function testA() {
+	  $asDeclensions = $this->_ltNouns->generateDeclensions("knyga");
+	  $this->assertInternalType('array', $asDeclensions);
+	  $this->assertInternalType('array', $asDeclensions['singular']);
+	  $this->assertInternalType('array', $asDeclensions['plural']);
+	  
+	  $this->assertEquals('knyga', $asDeclensions['singular']['kas']);
+	  $this->assertEquals('knygos', $asDeclensions['singular']['ko']);
+	  $this->assertEquals('knygą', $asDeclensions['singular']['ką']);
+	  $this->assertEquals('knygai', $asDeclensions['singular']['kam']);
+	  $this->assertEquals('knygoje', $asDeclensions['singular']['kame']);
+	  $this->assertEquals('knyga', $asDeclensions['singular']['kuo']);
+	  $this->assertEquals('knyga', $asDeclensions['singular']['o']);
+
+	  $this->assertEquals('knygos', $asDeclensions['plural']['kas']);
+	  $this->assertEquals('knygų', $asDeclensions['plural']['ko']);
+	  $this->assertEquals('knygas', $asDeclensions['plural']['ką']);
+	  $this->assertEquals('knygoms', $asDeclensions['plural']['kam']);
+	  $this->assertEquals('knygose', $asDeclensions['plural']['kame']);
+	  $this->assertEquals('knygomis', $asDeclensions['plural']['kuo']);
+	  $this->assertEquals('knygos', $asDeclensions['plural']['o']);
+  }
+    
 }
 

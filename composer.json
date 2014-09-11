@@ -1,6 +1,6 @@
 {
     "name": "lt-words/lt-nouns",
-    "description": "Generator of noun declensionss for the Lithuanian language",
+    "description": "Generator of noun declensions for the Lithuanian language",
     "license": "MIT",
     "keywords": ["Lithuanian"],
     "authors": [
