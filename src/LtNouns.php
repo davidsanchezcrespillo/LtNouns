@@ -6,6 +6,30 @@ namespace LtWords\LtNouns;
  */
 class LtNouns
 {
+  private function generateDeclensionsForE($root)
+  {
+      return array(
+        "singular" => array(
+          "kas" => $root . "ė",
+          "ko" => $root .  "ės",
+          "ką" => $root . "ę",
+          "kam" => $root . "ei",
+          "kame" => $root . "ėje",
+          "kuo" => $root . "e",
+          "o" => $root . "e"
+        ),
+        "plural" => array(
+          "kas" => $root . "ės",
+          "ko" => $root . "ių",
+          "ką" => $root . "es",
+          "kam" => $root . "ėms",
+          "kame" => $root . "ėse",
+          "kuo" => $root . "ėmis",
+          "o" => $root . "ės"
+        )
+      );
+  }
+
   private function generateDeclensionsForA($root)
   {
       return array(
@@ -29,6 +53,7 @@ class LtNouns
         )
       );
   }
+
   private function generateDeclensionsForAs($root)
   {
       return array(
@@ -72,6 +97,11 @@ class LtNouns
       if (preg_match('/(.*)a$/', $noun, $matches)) {
           $root = $matches[1];
           return $this->generateDeclensionsForA($root);
+      }
+      
+      if (preg_match('/(.*)ė$/', $noun, $matches)) {
+          $root = $matches[1];
+          return $this->generateDeclensionsForE($root);
       }
       
       return "";
