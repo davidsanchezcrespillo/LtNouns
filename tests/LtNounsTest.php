@@ -64,6 +64,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase {
 
   public function testE() {
 	  $asDeclensions = $this->_ltNouns->generateDeclensions("varškė");
+
 	  $this->assertInternalType('array', $asDeclensions);
 	  $this->assertInternalType('array', $asDeclensions['singular']);
 	  $this->assertInternalType('array', $asDeclensions['plural']);
@@ -83,6 +84,10 @@ class LtNounsTest extends PHPUnit_Framework_TestCase {
 	  $this->assertEquals('varškėse', $asDeclensions['plural']['kame']);
 	  $this->assertEquals('varškėmis', $asDeclensions['plural']['kuo']);
 	  $this->assertEquals('varškės', $asDeclensions['plural']['o']);
-  }    
+	  
+	  $moreDeclensions = $this->_ltNouns->generateDeclensions("katė");
+  
+	  $this->assertEquals("kačių", $moreDeclensions['plural']['ko']);
+  }
 }
 

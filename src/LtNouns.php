@@ -6,26 +6,40 @@ namespace LtWords\LtNouns;
  */
 class LtNouns
 {
+  private $_substitutionsTable = array(
+    "ti" => "či",
+    "di" => "dži"
+  );
+
+  private function performPhoneticalSubstitutions($word)
+  {
+      $replacedWord = $word;
+      foreach ($this->_substitutionsTable as $pattern => $replacement) {
+          $replacedWord = str_replace($pattern, $replacement, $replacedWord);
+      }
+      return $replacedWord;
+  }
+
   private function generateDeclensionsForE($root)
   {
       return array(
         "singular" => array(
-          "kas" => $root . "ė",
-          "ko" => $root .  "ės",
-          "ką" => $root . "ę",
-          "kam" => $root . "ei",
-          "kame" => $root . "ėje",
-          "kuo" => $root . "e",
-          "o" => $root . "e"
+          "kas" => $this->performPhoneticalSubstitutions($root . "ė"),
+          "ko" => $this->performPhoneticalSubstitutions($root .  "ės"),
+          "ką" => $this->performPhoneticalSubstitutions($root . "ę"),
+          "kam" => $this->performPhoneticalSubstitutions($root . "ei"),
+          "kame" => $this->performPhoneticalSubstitutions($root . "ėje"),
+          "kuo" => $this->performPhoneticalSubstitutions($root . "e"),
+          "o" => $this->performPhoneticalSubstitutions($root . "e")
         ),
         "plural" => array(
-          "kas" => $root . "ės",
-          "ko" => $root . "ių",
-          "ką" => $root . "es",
-          "kam" => $root . "ėms",
-          "kame" => $root . "ėse",
-          "kuo" => $root . "ėmis",
-          "o" => $root . "ės"
+          "kas" => $this->performPhoneticalSubstitutions($root . "ės"),
+          "ko" => $this->performPhoneticalSubstitutions($root . "ių"),
+          "ką" => $this->performPhoneticalSubstitutions($root . "es"),
+          "kam" => $this->performPhoneticalSubstitutions($root . "ėms"),
+          "kame" => $this->performPhoneticalSubstitutions($root . "ėse"),
+          "kuo" => $this->performPhoneticalSubstitutions($root . "ėmis"),
+          "o" => $this->performPhoneticalSubstitutions($root . "ės")
         )
       );
   }
@@ -34,22 +48,22 @@ class LtNouns
   {
       return array(
         "singular" => array(
-          "kas" => $root . "a",
-          "ko" => $root .  "os",
-          "ką" => $root . "ą",
-          "kam" => $root . "ai",
-          "kame" => $root . "oje",
-          "kuo" => $root . "a",
-          "o" => $root . "a"
+          "kas" => $this->performPhoneticalSubstitutions($root . "a"),
+          "ko" => $this->performPhoneticalSubstitutions($root .  "os"),
+          "ką" => $this->performPhoneticalSubstitutions($root . "ą"),
+          "kam" => $this->performPhoneticalSubstitutions($root . "ai"),
+          "kame" => $this->performPhoneticalSubstitutions($root . "oje"),
+          "kuo" => $this->performPhoneticalSubstitutions($root . "a"),
+          "o" => $this->performPhoneticalSubstitutions($root . "a")
         ),
         "plural" => array(
-          "kas" => $root . "os",
-          "ko" => $root . "ų",
-          "ką" => $root . "as",
-          "kam" => $root . "oms",
-          "kame" => $root . "ose",
-          "kuo" => $root . "omis",
-          "o" => $root . "os"
+          "kas" => $this->performPhoneticalSubstitutions($root . "os"),
+          "ko" => $this->performPhoneticalSubstitutions($root . "ų"),
+          "ką" => $this->performPhoneticalSubstitutions($root . "as"),
+          "kam" => $this->performPhoneticalSubstitutions($root . "oms"),
+          "kame" => $this->performPhoneticalSubstitutions($root . "ose"),
+          "kuo" => $this->performPhoneticalSubstitutions($root . "omis"),
+          "o" => $this->performPhoneticalSubstitutions($root . "os")
         )
       );
   }
@@ -58,22 +72,22 @@ class LtNouns
   {
       return array(
         "singular" => array(
-          "kas" => $root . "as",
-          "ko" => $root .  "o",
-          "ką" => $root . "ą",
-          "kam" => $root . "ui",
-          "kame" => $root . "e",
-          "kuo" => $root . "u",
-          "o" => $root . "e"
+          "kas" => $this->performPhoneticalSubstitutions($root . "as"),
+          "ko" => $this->performPhoneticalSubstitutions($root .  "o"),
+          "ką" => $this->performPhoneticalSubstitutions($root . "ą"),
+          "kam" => $this->performPhoneticalSubstitutions($root . "ui"),
+          "kame" => $this->performPhoneticalSubstitutions($root . "e"),
+          "kuo" => $this->performPhoneticalSubstitutions($root . "u"),
+          "o" => $this->performPhoneticalSubstitutions($root . "e")
         ),
         "plural" => array(
-          "kas" => $root . "ai",
-          "ko" => $root . "ų",
-          "ką" => $root . "us",
-          "kam" => $root . "ams",
-          "kame" => $root . "uose",
-          "kuo" => $root . "ais",
-          "o" => $root . "ai"
+          "kas" => $this->performPhoneticalSubstitutions($root . "ai"),
+          "ko" => $this->performPhoneticalSubstitutions($root . "ų"),
+          "ką" => $this->performPhoneticalSubstitutions($root . "us"),
+          "kam" => $this->performPhoneticalSubstitutions($root . "ams"),
+          "kame" => $this->performPhoneticalSubstitutions($root . "uose"),
+          "kuo" => $this->performPhoneticalSubstitutions($root . "ais"),
+          "o" => $this->performPhoneticalSubstitutions($root . "ai")
         )
       );
   }
