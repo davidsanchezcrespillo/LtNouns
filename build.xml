@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<project name="LtNouns" default="build" basedir="." description="Buildfile for LtNouns">
+	<target name="test">
+		<phpunit haltonerror="true" haltonfailure="true">
+			<batchtest>
+				<fileset dir="tests">
+					<include name="*Test.php"/>
+				</fileset>
+			</batchtest>
+		</phpunit>
+	</target>
+	
+	<target name="phpcs">
+		<phpcodesniffer
+			standard="Zend"
+			allowedFileExtensions="php">
+			<fileset dir="src" id="filestosniff">
+              <include name="*.php"/>
+            </fileset>
+			<formatter type="summary" usefile="false"  />
+			<formatter type="full" outfile="report.txt" />
+		</phpcodesniffer>
+	</target>
+	
+	<target name="build" depends="test,phpcs">
+	</target>
+</project>
