@@ -3,43 +3,79 @@ namespace LtWords\LtNouns;
  
 /**
  * Class to generate noun declensions in Lithuanian language.
+ * References:
+ * https://lt.wikipedia.org/wiki/Kir%C4%8Diuot%C4%97
  */
 class LtNouns
 {
-  private $_substitutionsTable = array(
-    "ti" => "či",
-    "di" => "dži"
-  );
-
-  private function performPhoneticalSubstitutions($word)
-  {
-      $replacedWord = $word;
-      foreach ($this->_substitutionsTable as $pattern => $replacement) {
-          $replacedWord = str_replace($pattern, $replacement, $replacedWord);
-      }
-      return $replacedWord;
-  }
-
   private function generateDeclensionsForE($root)
   {
       return array(
         "singular" => array(
-          "kas" => $this->performPhoneticalSubstitutions($root . "ė"),
-          "ko" => $this->performPhoneticalSubstitutions($root .  "ės"),
-          "ką" => $this->performPhoneticalSubstitutions($root . "ę"),
-          "kam" => $this->performPhoneticalSubstitutions($root . "ei"),
-          "kame" => $this->performPhoneticalSubstitutions($root . "ėje"),
-          "kuo" => $this->performPhoneticalSubstitutions($root . "e"),
-          "o" => $this->performPhoneticalSubstitutions($root . "e")
+          "kas" => $root . "ė",
+          "ko" => $root .  "ės",
+          "ką" => $root . "ę",
+          "kam" => $root . "ei",
+          "kame" => $root . "ėje",
+          "kuo" => $root . "e",
+          "o" => $root . "e"
         ),
         "plural" => array(
-          "kas" => $this->performPhoneticalSubstitutions($root . "ės"),
-          "ko" => $this->performPhoneticalSubstitutions($root . "ių"),
-          "ką" => $this->performPhoneticalSubstitutions($root . "es"),
-          "kam" => $this->performPhoneticalSubstitutions($root . "ėms"),
-          "kame" => $this->performPhoneticalSubstitutions($root . "ėse"),
-          "kuo" => $this->performPhoneticalSubstitutions($root . "ėmis"),
-          "o" => $this->performPhoneticalSubstitutions($root . "ės")
+          "kas" => $root . "ės",
+          "ko" => $root . "ių",
+          "ką" => $root . "es",
+          "kam" => $root . "ėms",
+          "kame" => $root . "ėse",
+          "kuo" => $root . "ėmis",
+          "o" => $root . "ės"
+        )
+      );
+  }
+
+  private function generateDeclensionsForTe($root)
+  {
+      return array(
+        "singular" => array(
+          "kas" => $root . "tė",
+          "ko" => $root .  "tės",
+          "ką" => $root . "tę",
+          "kam" => $root . "tei",
+          "kame" => $root . "tėje",
+          "kuo" => $root . "te",
+          "o" => $root . "te"
+        ),
+        "plural" => array(
+          "kas" => $root . "tės",
+          "ko" => $root . "čių",
+          "ką" => $root . "tes",
+          "kam" => $root . "tėms",
+          "kame" => $root . "tėse",
+          "kuo" => $root . "tėmis",
+          "o" => $root . "tės"
+        )
+      );
+  }
+
+  private function generateDeclensionsForDe($root)
+  {
+      return array(
+        "singular" => array(
+          "kas" => $root . "dė",
+          "ko" => $root .  "dės",
+          "ką" => $root . "dę",
+          "kam" => $root . "dei",
+          "kame" => $root . "dėje",
+          "kuo" => $root . "de",
+          "o" => $root . "de"
+        ),
+        "plural" => array(
+          "kas" => $root . "dės",
+          "ko" => $root . "džių",
+          "ką" => $root . "des",
+          "kam" => $root . "dėms",
+          "kame" => $root . "dėse",
+          "kuo" => $root . "dėmis",
+          "o" => $root . "dės"
         )
       );
   }
@@ -48,22 +84,22 @@ class LtNouns
   {
       return array(
         "singular" => array(
-          "kas" => $this->performPhoneticalSubstitutions($root . "a"),
-          "ko" => $this->performPhoneticalSubstitutions($root .  "os"),
-          "ką" => $this->performPhoneticalSubstitutions($root . "ą"),
-          "kam" => $this->performPhoneticalSubstitutions($root . "ai"),
-          "kame" => $this->performPhoneticalSubstitutions($root . "oje"),
-          "kuo" => $this->performPhoneticalSubstitutions($root . "a"),
-          "o" => $this->performPhoneticalSubstitutions($root . "a")
+          "kas" => $root . "a",
+          "ko" => $root .  "os",
+          "ką" => $root . "ą",
+          "kam" => $root . "ai",
+          "kame" => $root . "oje",
+          "kuo" => $root . "a",
+          "o" => $root . "a"
         ),
         "plural" => array(
-          "kas" => $this->performPhoneticalSubstitutions($root . "os"),
-          "ko" => $this->performPhoneticalSubstitutions($root . "ų"),
-          "ką" => $this->performPhoneticalSubstitutions($root . "as"),
-          "kam" => $this->performPhoneticalSubstitutions($root . "oms"),
-          "kame" => $this->performPhoneticalSubstitutions($root . "ose"),
-          "kuo" => $this->performPhoneticalSubstitutions($root . "omis"),
-          "o" => $this->performPhoneticalSubstitutions($root . "os")
+          "kas" => $root . "os",
+          "ko" => $root . "ų",
+          "ką" => $root . "as",
+          "kam" => $root . "oms",
+          "kame" => $root . "ose",
+          "kuo" => $root . "omis",
+          "o" => $root . "os"
         )
       );
   }
@@ -72,22 +108,22 @@ class LtNouns
   {
       return array(
         "singular" => array(
-          "kas" => $this->performPhoneticalSubstitutions($root . "as"),
-          "ko" => $this->performPhoneticalSubstitutions($root .  "o"),
-          "ką" => $this->performPhoneticalSubstitutions($root . "ą"),
-          "kam" => $this->performPhoneticalSubstitutions($root . "ui"),
-          "kame" => $this->performPhoneticalSubstitutions($root . "e"),
-          "kuo" => $this->performPhoneticalSubstitutions($root . "u"),
-          "o" => $this->performPhoneticalSubstitutions($root . "e")
+          "kas" => $root . "as",
+          "ko" => $root .  "o",
+          "ką" => $root . "ą",
+          "kam" => $root . "ui",
+          "kame" => $root . "e",
+          "kuo" => $root . "u",
+          "o" => $root . "e"
         ),
         "plural" => array(
-          "kas" => $this->performPhoneticalSubstitutions($root . "ai"),
-          "ko" => $this->performPhoneticalSubstitutions($root . "ų"),
-          "ką" => $this->performPhoneticalSubstitutions($root . "us"),
-          "kam" => $this->performPhoneticalSubstitutions($root . "ams"),
-          "kame" => $this->performPhoneticalSubstitutions($root . "uose"),
-          "kuo" => $this->performPhoneticalSubstitutions($root . "ais"),
-          "o" => $this->performPhoneticalSubstitutions($root . "ai")
+          "kas" => $root . "ai",
+          "ko" => $root . "ų",
+          "ką" => $root . "us",
+          "kam" => $root . "ams",
+          "kame" => $root . "uose",
+          "kuo" => $root . "ais",
+          "o" => $root . "ai"
         )
       );
   }
@@ -96,22 +132,22 @@ class LtNouns
   {
       return array(
         "singular" => array(
-          "kas" => $this->performPhoneticalSubstitutions($root . "ias"),
-          "ko" => $this->performPhoneticalSubstitutions($root .  "io"),
-          "ką" => $this->performPhoneticalSubstitutions($root . "ią"),
-          "kam" => $this->performPhoneticalSubstitutions($root . "iui"),
-          "kame" => $this->performPhoneticalSubstitutions($root . "yje"),
-          "kuo" => $this->performPhoneticalSubstitutions($root . "iu"),
-          "o" => $this->performPhoneticalSubstitutions($root . "y")
+          "kas" => $root . "ias",
+          "ko" => $root .  "io",
+          "ką" => $root . "ią",
+          "kam" => $root . "iui",
+          "kame" => $root . "yje",
+          "kuo" => $root . "iu",
+          "o" => $root . "y"
         ),
         "plural" => array(
-          "kas" => $this->performPhoneticalSubstitutions($root . "iai"),
-          "ko" => $this->performPhoneticalSubstitutions($root . "ių"),
-          "ką" => $this->performPhoneticalSubstitutions($root . "ius"),
-          "kam" => $this->performPhoneticalSubstitutions($root . "iams"),
-          "kame" => $this->performPhoneticalSubstitutions($root . "iuose"),
-          "kuo" => $this->performPhoneticalSubstitutions($root . "iais"),
-          "o" => $this->performPhoneticalSubstitutions($root . "iai")
+          "kas" => $root . "iai",
+          "ko" => $root . "ių",
+          "ką" => $root . "ius",
+          "kam" => $root . "iams",
+          "kame" => $root . "iuose",
+          "kuo" => $root . "iais",
+          "o" => $root . "iai"
         )
       );
   }
@@ -120,22 +156,214 @@ class LtNouns
   {
       return array(
         "singular" => array(
-          "kas" => $this->performPhoneticalSubstitutions($root . "jas"),
-          "ko" => $this->performPhoneticalSubstitutions($root .  "jo"),
-          "ką" => $this->performPhoneticalSubstitutions($root . "ją"),
-          "kam" => $this->performPhoneticalSubstitutions($root . "jui"),
-          "kame" => $this->performPhoneticalSubstitutions($root . "juje"),
-          "kuo" => $this->performPhoneticalSubstitutions($root . "ju"),
-          "o" => $this->performPhoneticalSubstitutions($root . "jau")
+          "kas" => $root . "jas",
+          "ko" => $root .  "jo",
+          "ką" => $root . "ją",
+          "kam" => $root . "jui",
+          "kame" => $root . "juje",
+          "kuo" => $root . "ju",
+          "o" => $root . "jau"
         ),
         "plural" => array(
-          "kas" => $this->performPhoneticalSubstitutions($root . "jai"),
-          "ko" => $this->performPhoneticalSubstitutions($root . "jų"),
-          "ką" => $this->performPhoneticalSubstitutions($root . "jus"),
-          "kam" => $this->performPhoneticalSubstitutions($root . "jams"),
-          "kame" => $this->performPhoneticalSubstitutions($root . "juose"),
-          "kuo" => $this->performPhoneticalSubstitutions($root . "jais"),
-          "o" => $this->performPhoneticalSubstitutions($root . "jai")
+          "kas" => $root . "jai",
+          "ko" => $root . "jų",
+          "ką" => $root . "jus",
+          "kam" => $root . "jams",
+          "kame" => $root . "juose",
+          "kuo" => $root . "jais",
+          "o" => $root . "jai"
+        )
+      );
+  }
+
+  private function generateDeclensionsForIs($root)
+  {
+      return array(
+        "singular" => array(
+          "kas" => $root . "is",
+          "ko" => $root .  "io",
+          "ką" => $root . "į",
+          "kam" => $root . "iui",
+          "kame" => $root . "yje",
+          "kuo" => $root . "iu",
+          "o" => $root . "i"
+        ),
+        "plural" => array(
+          "kas" => $root . "iai",
+          "ko" => $root . "ių",
+          "ką" => $root . "ius",
+          "kam" => $root . "iams",
+          "kame" => $root . "iuose",
+          "kuo" => $root . "iais",
+          "o" => $root . "iai"
+        )
+      );
+  }
+
+  private function generateDeclensionsForDis($root)
+  {
+      return array(
+        "singular" => array(
+          "kas" => $root . "dis",
+          "ko" => $root .  "džio",
+          "ką" => $root . "dį",
+          "kam" => $root . "džiui",
+          "kame" => $root . "dyje",
+          "kuo" => $root . "džiu",
+          "o" => $root . "di"
+        ),
+        "plural" => array(
+          "kas" => $root . "džiai",
+          "ko" => $root . "džių",
+          "ką" => $root . "džius",
+          "kam" => $root . "džiams",
+          "kame" => $root . "džiuose",
+          "kuo" => $root . "džiais",
+          "o" => $root . "džiai"
+        )
+      );
+  }
+
+  private function generateDeclensionsForTis($root)
+  {
+      return array(
+        "singular" => array(
+          "kas" => $root . "tis",
+          "ko" => $root .  "čio",
+          "ką" => $root . "tį",
+          "kam" => $root . "čiui",
+          "kame" => $root . "tyje",
+          "kuo" => $root . "čiu",
+          "o" => $root . "ti"
+        ),
+        "plural" => array(
+          "kas" => $root . "čiai",
+          "ko" => $root . "čių",
+          "ką" => $root . "čius",
+          "kam" => $root . "čiams",
+          "kame" => $root . "čiuose",
+          "kuo" => $root . "čiais",
+          "o" => $root . "čiai"
+        )
+      );
+  }
+
+  private function generateDeclensionsForJis($root)
+  {
+      return array(
+        "singular" => array(
+          "kas" => $root . "jis",
+          "ko" => $root .  "jo",
+          "ką" => $root . "jį",
+          "kam" => $root . "jui",
+          "kame" => $root . "jyje",
+          "kuo" => $root . "ju",
+          "o" => $root . "ji"
+        ),
+        "plural" => array(
+          "kas" => $root . "jai",
+          "ko" => $root . "jų",
+          "ką" => $root . "jus",
+          "kam" => $root . "jams",
+          "kame" => $root . "juose",
+          "kuo" => $root . "jais",
+          "o" => $root . "jai"
+        )
+      );
+  }
+
+  private function generateDeclensionsForYs($root)
+  {
+      return array(
+        "singular" => array(
+          "kas" => $root . "ys",
+          "ko" => $root .  "io",
+          "ką" => $root . "į",
+          "kam" => $root . "iui",
+          "kame" => $root . "yje",
+          "kuo" => $root . "iu",
+          "o" => $root . "y"
+        ),
+        "plural" => array(
+          "kas" => $root . "iai",
+          "ko" => $root . "ių",
+          "ką" => $root . "ius",
+          "kam" => $root . "iams",
+          "kame" => $root . "iuose",
+          "kuo" => $root . "iais",
+          "o" => $root . "iai"
+        )
+      );
+  }
+
+  private function generateDeclensionsForDys($root)
+  {
+      return array(
+        "singular" => array(
+          "kas" => $root . "dys",
+          "ko" => $root .  "džio",
+          "ką" => $root . "dį",
+          "kam" => $root . "džiui",
+          "kame" => $root . "dyje",
+          "kuo" => $root . "džiu",
+          "o" => $root . "dy"
+        ),
+        "plural" => array(
+          "kas" => $root . "džiai",
+          "ko" => $root . "džių",
+          "ką" => $root . "džius",
+          "kam" => $root . "džiams",
+          "kame" => $root . "džiuose",
+          "kuo" => $root . "džiais",
+          "o" => $root . "džiai"
+        )
+      );
+  }
+
+  private function generateDeclensionsForJys($root)
+  {
+      return array(
+        "singular" => array(
+          "kas" => $root . "jys",
+          "ko" => $root .  "jo",
+          "ką" => $root . "jį",
+          "kam" => $root . "jui",
+          "kame" => $root . "jyje",
+          "kuo" => $root . "ju",
+          "o" => $root . "jy"
+        ),
+        "plural" => array(
+          "kas" => $root . "jai",
+          "ko" => $root . "jų",
+          "ką" => $root . "jus",
+          "kam" => $root . "jams",
+          "kame" => $root . "juose",
+          "kuo" => $root . "jais",
+          "o" => $root . "jai"
+        )
+      );
+  }
+
+  private function generateDeclensionsForTys($root)
+  {
+      return array(
+        "singular" => array(
+          "kas" => $root . "tys",
+          "ko" => $root .  "čio",
+          "ką" => $root . "tį",
+          "kam" => $root . "čiui",
+          "kame" => $root . "tyje",
+          "kuo" => $root . "čiu",
+          "o" => $root . "ty"
+        ),
+        "plural" => array(
+          "kas" => $root . "čiai",
+          "ko" => $root . "čių",
+          "ką" => $root . "čius",
+          "kam" => $root . "čiams",
+          "kame" => $root . "čiuose",
+          "kuo" => $root . "čiais",
+          "o" => $root . "čiai"
         )
       );
   }
@@ -144,22 +372,22 @@ class LtNouns
   {
       return array(
         "singular" => array(
-          "kas" => $this->performPhoneticalSubstitutions($root . "us"),
-          "ko" => $this->performPhoneticalSubstitutions($root .  "aus"),
-          "ką" => $this->performPhoneticalSubstitutions($root . "ų"),
-          "kam" => $this->performPhoneticalSubstitutions($root . "ui"),
-          "kame" => $this->performPhoneticalSubstitutions($root . "uje"),
-          "kuo" => $this->performPhoneticalSubstitutions($root . "umi"),
-          "o" => $this->performPhoneticalSubstitutions($root . "au")
+          "kas" => $root . "us",
+          "ko" => $root .  "aus",
+          "ką" => $root . "ų",
+          "kam" => $root . "ui",
+          "kame" => $root . "uje",
+          "kuo" => $root . "umi",
+          "o" => $root . "au"
         ),
         "plural" => array(
-          "kas" => $this->performPhoneticalSubstitutions($root . "ūs"),
-          "ko" => $this->performPhoneticalSubstitutions($root . "ų"),
-          "ką" => $this->performPhoneticalSubstitutions($root . "us"),
-          "kam" => $this->performPhoneticalSubstitutions($root . "ums"),
-          "kame" => $this->performPhoneticalSubstitutions($root . "uose"),
-          "kuo" => $this->performPhoneticalSubstitutions($root . "umis"),
-          "o" => $this->performPhoneticalSubstitutions($root . "ūs")
+          "kas" => $root . "ūs",
+          "ko" => $root . "ų",
+          "ką" => $root . "us",
+          "kam" => $root . "ums",
+          "kame" => $root . "uose",
+          "kuo" => $root . "umis",
+          "o" => $root . "ūs"
         )
       );
   }
@@ -168,22 +396,22 @@ class LtNouns
   {
       return array(
         "singular" => array(
-          "kas" => $this->performPhoneticalSubstitutions($root . "ius"),
-          "ko" => $this->performPhoneticalSubstitutions($root .  "iaus"),
-          "ką" => $this->performPhoneticalSubstitutions($root . "ių"),
-          "kam" => $this->performPhoneticalSubstitutions($root . "iui"),
-          "kame" => $this->performPhoneticalSubstitutions($root . "iuje"),
-          "kuo" => $this->performPhoneticalSubstitutions($root . "iumi"),
-          "o" => $this->performPhoneticalSubstitutions($root . "iau")
+          "kas" => $root . "ius",
+          "ko" => $root .  "iaus",
+          "ką" => $root . "ių",
+          "kam" => $root . "iui",
+          "kame" => $root . "iuje",
+          "kuo" => $root . "iumi",
+          "o" => $root . "iau"
         ),
         "plural" => array(
-          "kas" => $this->performPhoneticalSubstitutions($root . "iai"),
-          "ko" => $this->performPhoneticalSubstitutions($root . "ių"),
-          "ką" => $this->performPhoneticalSubstitutions($root . "ius"),
-          "kam" => $this->performPhoneticalSubstitutions($root . "iams"),
-          "kame" => $this->performPhoneticalSubstitutions($root . "iuose"),
-          "kuo" => $this->performPhoneticalSubstitutions($root . "iais"),
-          "o" => $this->performPhoneticalSubstitutions($root . "iai")
+          "kas" => $root . "iai",
+          "ko" => $root . "ių",
+          "ką" => $root . "ius",
+          "kam" => $root . "iams",
+          "kame" => $root . "iuose",
+          "kuo" => $root . "iais",
+          "o" => $root . "iai"
         )
       );
   }
@@ -192,22 +420,22 @@ class LtNouns
   {
       return array(
         "singular" => array(
-          "kas" => $this->performPhoneticalSubstitutions($root . "jus"),
-          "ko" => $this->performPhoneticalSubstitutions($root .  "jaus"),
-          "ką" => $this->performPhoneticalSubstitutions($root . "jų"),
-          "kam" => $this->performPhoneticalSubstitutions($root . "jui"),
-          "kame" => $this->performPhoneticalSubstitutions($root . "juje"),
-          "kuo" => $this->performPhoneticalSubstitutions($root . "jumi"),
-          "o" => $this->performPhoneticalSubstitutions($root . "jau")
+          "kas" => $root . "jus",
+          "ko" => $root .  "jaus",
+          "ką" => $root . "jų",
+          "kam" => $root . "jui",
+          "kame" => $root . "juje",
+          "kuo" => $root . "jumi",
+          "o" => $root . "jau"
         ),
         "plural" => array(
-          "kas" => $this->performPhoneticalSubstitutions($root . "jūs"),
-          "ko" => $this->performPhoneticalSubstitutions($root . "jų"),
-          "ką" => $this->performPhoneticalSubstitutions($root . "jus"),
-          "kam" => $this->performPhoneticalSubstitutions($root . "jams"),
-          "kame" => $this->performPhoneticalSubstitutions($root . "juose"),
-          "kuo" => $this->performPhoneticalSubstitutions($root . "jais"),
-          "o" => $this->performPhoneticalSubstitutions($root . "jūs")
+          "kas" => $root . "jūs",
+          "ko" => $root . "jų",
+          "ką" => $root . "jus",
+          "kam" => $root . "jams",
+          "kame" => $root . "juose",
+          "kuo" => $root . "jais",
+          "o" => $root . "jūs"
         )
       );
   }
@@ -243,6 +471,16 @@ class LtNouns
           return $this->generateDeclensionsForA($root);
       }
       
+      if (preg_match('/(.*)dė$/', $noun, $matches)) {
+          $root = $matches[1];
+          return $this->generateDeclensionsForDe($root);
+      }
+
+      if (preg_match('/(.*)tė$/', $noun, $matches)) {
+          $root = $matches[1];
+          return $this->generateDeclensionsForTe($root);
+      }
+
       if (preg_match('/(.*)ė$/', $noun, $matches)) {
           $root = $matches[1];
           return $this->generateDeclensionsForE($root);
@@ -261,6 +499,47 @@ class LtNouns
       if (preg_match('/(.*)us$/', $noun, $matches)) {
           $root = $matches[1];
           return $this->generateDeclensionsForUs($root);
+      }
+
+
+      if (preg_match('/(.*)dis$/', $noun, $matches)) {
+          $root = $matches[1];
+          return $this->generateDeclensionsForDis($root);
+      }
+      
+      if (preg_match('/(.*)tis$/', $noun, $matches)) {
+          $root = $matches[1];
+          return $this->generateDeclensionsForTis($root);
+      }
+
+      if (preg_match('/(.*)jis$/', $noun, $matches)) {
+          $root = $matches[1];
+          return $this->generateDeclensionsForJis($root);
+      }
+
+      if (preg_match('/(.*)is$/', $noun, $matches)) {
+          $root = $matches[1];
+          return $this->generateDeclensionsForIs($root);
+      }
+
+      if (preg_match('/(.*)dys$/', $noun, $matches)) {
+          $root = $matches[1];
+          return $this->generateDeclensionsForDys($root);
+      }
+
+      if (preg_match('/(.*)jys$/', $noun, $matches)) {
+          $root = $matches[1];
+          return $this->generateDeclensionsForJys($root);
+      }
+
+      if (preg_match('/(.*)tys$/', $noun, $matches)) {
+          $root = $matches[1];
+          return $this->generateDeclensionsForTys($root);
+      }
+
+      if (preg_match('/(.*)ys$/', $noun, $matches)) {
+          $root = $matches[1];
+          return $this->generateDeclensionsForYs($root);
       }
 
       return "";
