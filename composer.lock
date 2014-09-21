@@ -4,9 +4,49 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3e74bc047b0ade7c2508689dfec84b7d",
+    "hash": "423b67d9ee7a3d55f57811440e9258a5",
     "packages": [
-
+        {
+            "name": "lt-words/lt-wordtypes",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/davidsanchezcrespillo/LtWordTypes.git",
+                "reference": "8df4371f3254a0c1e3c6917746914aa3c675101b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/davidsanchezcrespillo/LtWordTypes/zipball/8df4371f3254a0c1e3c6917746914aa3c675101b",
+                "reference": "8df4371f3254a0c1e3c6917746914aa3c675101b",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phing/phing": "2.*",
+                "phpunit/phpunit": "4.0.*",
+                "squizlabs/php_codesniffer": "1.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LtWords\\LtWordTypes\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Sanchez Crespillo",
+                    "email": "davidsanchezcrespillo@gmail.com"
+                }
+            ],
+            "description": "Identification of word types for the Lithuanian language",
+            "keywords": [
+                "Lithuanian"
+            ],
+            "time": "2014-09-21 20:42:07"
+        }
     ],
     "packages-dev": [
         {
@@ -787,9 +827,9 @@
 
     ],
     "minimum-stability": "stable",
-    "stability-flags": [
-
-    ],
+    "stability-flags": {
+        "lt-words/lt-wordtypes": 20
+    },
     "prefer-stable": false,
     "platform": [
 

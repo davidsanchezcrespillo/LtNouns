@@ -8,6 +8,9 @@ namespace LtWords\LtNouns;
  */
 class LtNouns
 {
+  // Service to get the word type for a given noun
+  protected $_wordTypes;
+
   private function generateDeclensionsForE($root)
   {
       return array(
@@ -441,12 +444,12 @@ class LtNouns
   }
 
   /**
-   * Generate all declensions for a given noun.
-   * The input must be in nominative singular.
-   * The output will be an array containing all the declensions,
+   * Generate all declensions for a given noun of regular type.
+   * @param string $noun The input noun, in nominative singular.
+   * @return array containing all the declensions,
    * in singular and plural forms.
    */
-  public function generateDeclensions($noun)
+  private function generateRegularDeclensions($noun)
   {
       // Possible endings:
       // -jas, -ias, -as, -is, -ys, -ia, -a, -ė, -ius, -us, -uo
@@ -544,4 +547,25 @@ class LtNouns
 
       return "";
   }
+
+  /**
+   * Generate all declensions for a given noun.
+   * @param string $noun The input noun, in nominative singular.
+   * @return array containing all the declensions,
+   * in singular and plural forms.
+   */
+  public function generateDeclensions($noun)
+  {
+      $wordType = $this->_wordTypes->getWordType($noun);
+      
+      if ($wordType == \LtWords\LtWordTypes\LtWordTypes::REGULAR_NOUN) {
+          return $this->generateRegularDeclensions($noun);
+      }
+  }
+  
+  public function __construct(\LtWords\LtWordTypes\LtWordTypes $ltWordTypes)
+  {
+      $this->_wordTypes = $ltWordTypes;
+  }
+
 }

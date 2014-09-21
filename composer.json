@@ -9,7 +9,9 @@
             "email": "davidsanchezcrespillo@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "lt-words/lt-wordtypes": "dev-master"
+    },
     "require-dev": {
         "phpunit/phpunit": "4.0.*",
         "squizlabs/php_codesniffer": "1.*",
