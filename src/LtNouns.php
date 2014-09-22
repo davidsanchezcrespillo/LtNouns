@@ -443,6 +443,54 @@ class LtNouns
       );
   }
 
+  private function generateVDeclensionsForIs($root)
+  {
+      return array(
+        "singular" => array(
+          "kas" => $root . "is",
+          "ko" => $root .  "ies",
+          "ką" => $root . "į",
+          "kam" => $root . "iui",
+          "kame" => $root . "yje",
+          "kuo" => $root . "imi",
+          "o" => $root . "ie"
+        ),
+        "plural" => array(
+          "kas" => $root . "ys",
+          "ko" => $root . "ių",
+          "ką" => $root . "is",
+          "kam" => $root . "ims",
+          "kame" => $root . "yse",
+          "kuo" => $root . "imis",
+          "o" => $root . "ys"
+        )
+      );
+  }
+
+  private function generateVDeclensionsForTis($root)
+  {
+      return array(
+        "singular" => array(
+          "kas" => $root . "tis",
+          "ko" => $root .  "ties",
+          "ką" => $root . "tį",
+          "kam" => $root . "čiui",
+          "kame" => $root . "tyje",
+          "kuo" => $root . "timi",
+          "o" => $root . "tie"
+        ),
+        "plural" => array(
+          "kas" => $root . "tys",
+          "ko" => $root . "čių",
+          "ką" => $root . "tis",
+          "kam" => $root . "tims",
+          "kame" => $root . "tyse",
+          "kuo" => $root . "timis",
+          "o" => $root . "tys"
+        )
+      );
+  }
+
   /**
    * Generate all declensions for a given noun of regular type.
    * @param string $noun The input noun, in nominative singular.
@@ -504,7 +552,6 @@ class LtNouns
           return $this->generateDeclensionsForUs($root);
       }
 
-
       if (preg_match('/(.*)dis$/', $noun, $matches)) {
           $root = $matches[1];
           return $this->generateDeclensionsForDis($root);
@@ -548,6 +595,29 @@ class LtNouns
       return "";
   }
 
+ /**
+   * Generate all declensions for a given noun of "V" type.
+   * @param string $noun The input noun, in nominative singular.
+   * @return array containing all the declensions,
+   * in singular and plural forms.
+   */
+  private function generateVDeclensions($noun)
+  {
+      // Possible endings:
+      // -jas, -ias, -as, -is, -ys, -ia, -a, -ė, -ius, -us, -uo
+
+      if (preg_match('/(.*)tis$/', $noun, $matches)) {
+          $root = $matches[1];
+          return $this->generateVDeclensionsForTis($root);
+      }
+      if (preg_match('/(.*)is$/', $noun, $matches)) {
+          $root = $matches[1];
+          return $this->generateVDeclensionsForIs($root);
+      }
+
+      return "";
+  }
+
   /**
    * Generate all declensions for a given noun.
    * @param string $noun The input noun, in nominative singular.
@@ -558,8 +628,14 @@ class LtNouns
   {
       $wordType = $this->_wordTypes->getWordType($noun);
       
+      //echo "WORD TYPE: $wordType\n";
+
       if ($wordType == \LtWords\LtWordTypes\LtWordTypes::REGULAR_NOUN) {
           return $this->generateRegularDeclensions($noun);
+      }
+      
+      if ($wordType == \LtWords\LtWordTypes\LtWordTypes::IRREGULAR_MASCULINE_NOUN) {
+          return $this->generateVDeclensions($noun);
       }
   }
   
