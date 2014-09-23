@@ -1,6 +1,8 @@
 <?php 
 namespace LtWords\LtNouns;
- 
+
+use LtWords\LtWordTypes\LtWordTypes;
+
 /**
  * Class to generate noun declensions in Lithuanian language.
  * References:
@@ -481,7 +483,7 @@ class LtNouns
         ),
         "plural" => array(
           "kas" => $root . "tys",
-          "ko" => $root . "čių",
+          "ko" => $root . "tų",
           "ką" => $root . "tis",
           "kam" => $root . "tims",
           "kame" => $root . "tyse",
@@ -657,16 +659,16 @@ class LtNouns
       
       //echo "WORD TYPE: $wordType\n";
 
-      if ($wordType == \LtWords\LtWordTypes\LtWordTypes::REGULAR_NOUN) {
+      if ($wordType == LtWordTypes::REGULAR_NOUN) {
           return $this->generateRegularDeclensions($noun);
       }
       
-      if ($wordType == \LtWords\LtWordTypes\LtWordTypes::IRREGULAR_MASCULINE_NOUN) {
+      if ($wordType == LtWordTypes::IRREGULAR_MASCULINE_NOUN) {
           return $this->generateVDeclensions($noun);
       }
   }
   
-  public function __construct(\LtWords\LtWordTypes\LtWordTypes $ltWordTypes)
+  public function __construct(LtWordTypes $ltWordTypes)
   {
       $this->_wordTypes = $ltWordTypes;
   }

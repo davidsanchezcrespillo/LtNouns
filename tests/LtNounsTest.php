@@ -468,7 +468,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
       $this->assertEquals('dantie', $asDeclensions['singular']['o']);
 
       $this->assertEquals('dantys', $asDeclensions['plural']['kas']);
-      $this->assertEquals('dančių', $asDeclensions['plural']['ko']);
+      $this->assertEquals('dantų', $asDeclensions['plural']['ko']);
       $this->assertEquals('dantis', $asDeclensions['plural']['ką']);
       $this->assertEquals('dantims', $asDeclensions['plural']['kam']);
       $this->assertEquals('dantyse', $asDeclensions['plural']['kame']);
