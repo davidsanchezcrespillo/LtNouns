@@ -519,7 +519,8 @@ class LtNouns
   
   /**
    * Generate all declensions for a given noun of regular type.
-   * @param string $noun The input noun, in nominative singular.
+   * @param string $noun The input noun, in nominative singular 
+   * and lowercase.
    * @return array containing all the declensions,
    * in singular and plural forms.
    */
@@ -623,7 +624,8 @@ class LtNouns
 
  /**
    * Generate all declensions for a given noun of "V" type.
-   * @param string $noun The input noun, in nominative singular.
+   * @param string $noun The input noun, in nominative singular
+   * and lowercase.
    * @return array containing all the declensions,
    * in singular and plural forms.
    */
@@ -655,17 +657,21 @@ class LtNouns
    */
   public function generateDeclensions($noun)
   {
-      $wordType = $this->_wordTypes->getWordType($noun);
+      //echo "NOUN: $noun\n";
+      $nounToCheck = mb_strtolower($noun, 'UTF-8');
+      $wordType = $this->_wordTypes->getWordType($nounToCheck);
       
       //echo "WORD TYPE: $wordType\n";
 
       if ($wordType == LtWordTypes::REGULAR_NOUN) {
-          return $this->generateRegularDeclensions($noun);
+          return $this->generateRegularDeclensions($nounToCheck);
       }
       
       if ($wordType == LtWordTypes::IRREGULAR_MASCULINE_NOUN) {
-          return $this->generateVDeclensions($noun);
+          return $this->generateVDeclensions($nounToCheck);
       }
+      
+      return "";
   }
   
   public function __construct(LtWordTypes $ltWordTypes)

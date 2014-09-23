@@ -162,6 +162,28 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
       $this->assertEquals('katėse', $asDeclensions['plural']['kame']);
       $this->assertEquals('katėmis', $asDeclensions['plural']['kuo']);
       $this->assertEquals('katės', $asDeclensions['plural']['o']);
+
+      $asDeclensions = $this->_ltNouns->generateDeclensions("katĖ");
+
+      $this->assertInternalType('array', $asDeclensions);
+      $this->assertInternalType('array', $asDeclensions['singular']);
+      $this->assertInternalType('array', $asDeclensions['plural']);
+      
+      $this->assertEquals('katė', $asDeclensions['singular']['kas']);
+      $this->assertEquals('katės', $asDeclensions['singular']['ko']);
+      $this->assertEquals('katę', $asDeclensions['singular']['ką']);
+      $this->assertEquals('katei', $asDeclensions['singular']['kam']);
+      $this->assertEquals('katėje', $asDeclensions['singular']['kame']);
+      $this->assertEquals('kate', $asDeclensions['singular']['kuo']);
+      $this->assertEquals('kate', $asDeclensions['singular']['o']);
+
+      $this->assertEquals('katės', $asDeclensions['plural']['kas']);
+      $this->assertEquals('kačių', $asDeclensions['plural']['ko']);
+      $this->assertEquals('kates', $asDeclensions['plural']['ką']);
+      $this->assertEquals('katėms', $asDeclensions['plural']['kam']);
+      $this->assertEquals('katėse', $asDeclensions['plural']['kame']);
+      $this->assertEquals('katėmis', $asDeclensions['plural']['kuo']);
+      $this->assertEquals('katės', $asDeclensions['plural']['o']);
   }
 
   public function testDe() {
