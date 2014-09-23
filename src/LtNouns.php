@@ -491,6 +491,30 @@ class LtNouns
       );
   }
 
+  private function generateVDeclensionsForUo($root)
+  {
+      return array(
+        "singular" => array(
+          "kas" => $root . "uo",
+          "ko" => $root .  "ens",
+          "ką" => $root . "enį",
+          "kam" => $root . "eniui",
+          "kame" => $root . "enyje",
+          "kuo" => $root . "eniu",
+          "o" => $root . "enie"
+        ),
+        "plural" => array(
+          "kas" => $root . "enys",
+          "ko" => $root . "enų",
+          "ką" => $root . "enis",
+          "kam" => $root . "enims",
+          "kame" => $root . "enyse",
+          "kuo" => $root . "enimis",
+          "o" => $root . "enys"
+        )
+      );
+  }
+  
   /**
    * Generate all declensions for a given noun of regular type.
    * @param string $noun The input noun, in nominative singular.
@@ -614,7 +638,10 @@ class LtNouns
           $root = $matches[1];
           return $this->generateVDeclensionsForIs($root);
       }
-
+      if (preg_match('/(.*)uo$/', $noun, $matches)) {
+          $root = $matches[1];
+          return $this->generateVDeclensionsForUo($root);
+      }
       return "";
   }
 

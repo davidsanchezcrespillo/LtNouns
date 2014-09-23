@@ -499,4 +499,29 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
       $this->assertEquals('debesimis', $asDeclensions['plural']['kuo']);
       $this->assertEquals('debesys', $asDeclensions['plural']['o']);
   } 
+
+  public function testVUo() {
+      $asDeclensions = $this->_ltNouns->generateDeclensions("vanduo");
+
+      $this->assertInternalType('array', $asDeclensions);
+      $this->assertInternalType('array', $asDeclensions['singular']);
+      $this->assertInternalType('array', $asDeclensions['plural']);
+      
+      $this->assertEquals('vanduo', $asDeclensions['singular']['kas']);
+      $this->assertEquals('vandens', $asDeclensions['singular']['ko']);
+      $this->assertEquals('vandenį', $asDeclensions['singular']['ką']);
+      $this->assertEquals('vandeniui', $asDeclensions['singular']['kam']);
+      $this->assertEquals('vandenyje', $asDeclensions['singular']['kame']);
+      $this->assertEquals('vandeniu', $asDeclensions['singular']['kuo']);
+      $this->assertEquals('vandenie', $asDeclensions['singular']['o']);
+
+      $this->assertEquals('vandenys', $asDeclensions['plural']['kas']);
+      $this->assertEquals('vandenų', $asDeclensions['plural']['ko']);
+      $this->assertEquals('vandenis', $asDeclensions['plural']['ką']);
+      $this->assertEquals('vandenims', $asDeclensions['plural']['kam']);
+      $this->assertEquals('vandenyse', $asDeclensions['plural']['kame']);
+      $this->assertEquals('vandenimis', $asDeclensions['plural']['kuo']);
+      $this->assertEquals('vandenys', $asDeclensions['plural']['o']);
+  } 
+
 }
