@@ -636,7 +636,55 @@ class LtNouns
         )
       );
   }
+  
+  private function generateDeclensionsForMenuo()
+  {
+      return array(
+        "singular" => array(
+          "kas" => "mėnuo",
+          "ko" => "mėnesio",
+          "ką" => "mėnesį",
+          "kam" => "mėnesiui",
+          "kame" => "mėnesyje",
+          "kuo" => "mėnesiu",
+          "o" => "mėnesi"
+        ),
+        "plural" => array(
+          "kas" => "mėnesiai",
+          "ko" => "mėnesių",
+          "ką" => "mėnesius",
+          "kam" => "mėnesiams",
+          "kame" => "mėnesiuose",
+          "kuo" => "mėnesiais",
+          "o" => "mėnesiai"
+        )
+      );
+  }
 
+  private function generateDeclensionsForSuo()
+  {
+      return array(
+        "singular" => array(
+          "kas" => "šuo",
+          "ko" => "šuns",
+          "ką" => "šunį",
+          "kam" => "šuniui",
+          "kame" => "šunyje",
+          "kuo" => "šuniu",
+          "o" => "šunie"
+        ),
+        "plural" => array(
+          "kas" => "šunys",
+          "ko" => "šunų",
+          "ką" => "šunis",
+          "kam" => "šunims",
+          "kame" => "šunyse",
+          "kuo" => "šunimis",
+          "o" => "šunys"
+        )
+      );
+  }
+  
   /**
    * Generate all declensions for a given noun of regular type.
    * @param string $noun The input noun, in nominative singular 
@@ -814,9 +862,20 @@ class LtNouns
   {
       //echo "NOUN: $noun\n";
       $nounToCheck = mb_strtolower($noun, 'UTF-8');
+      
+      //echo "NOUN TO CHECK: '$nounToCheck'\n";
+      
       $wordType = $this->_wordTypes->getWordType($nounToCheck);
       
       //echo "WORD TYPE: $wordType\n";
+
+      if ($nounToCheck =='šuo') {
+          return $this->generateDeclensionsForSuo();
+      }
+
+      if ($nounToCheck == 'mėnuo') {
+          return $this->generateDeclensionsForMenuo();
+      }
 
       if ($wordType == LtWordTypes::REGULAR_NOUN) {
           return $this->generateRegularDeclensions($nounToCheck);

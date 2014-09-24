@@ -665,4 +665,53 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
       $this->assertEquals('dukterimis', $asDeclensions['plural']['kuo']);
       $this->assertEquals('dukterys', $asDeclensions['plural']['o']);
   } 
+
+  public function testSuo() {
+      $asDeclensions = $this->_ltNouns->generateDeclensions("šuo");
+
+      $this->assertInternalType('array', $asDeclensions);
+      $this->assertInternalType('array', $asDeclensions['singular']);
+      $this->assertInternalType('array', $asDeclensions['plural']);
+      
+      $this->assertEquals('šuo', $asDeclensions['singular']['kas']);
+      $this->assertEquals('šuns', $asDeclensions['singular']['ko']);
+      $this->assertEquals('šunį', $asDeclensions['singular']['ką']);
+      $this->assertEquals('šuniui', $asDeclensions['singular']['kam']);
+      $this->assertEquals('šunyje', $asDeclensions['singular']['kame']);
+      $this->assertEquals('šuniu', $asDeclensions['singular']['kuo']);
+      $this->assertEquals('šunie', $asDeclensions['singular']['o']);
+
+      $this->assertEquals('šunys', $asDeclensions['plural']['kas']);
+      $this->assertEquals('šunų', $asDeclensions['plural']['ko']);
+      $this->assertEquals('šunis', $asDeclensions['plural']['ką']);
+      $this->assertEquals('šunims', $asDeclensions['plural']['kam']);
+      $this->assertEquals('šunyse', $asDeclensions['plural']['kame']);
+      $this->assertEquals('šunimis', $asDeclensions['plural']['kuo']);
+      $this->assertEquals('šunys', $asDeclensions['plural']['o']);
+  } 
+
+  public function testMenuo() {
+      $asDeclensions = $this->_ltNouns->generateDeclensions("mėnuo");
+
+      $this->assertInternalType('array', $asDeclensions);
+      $this->assertInternalType('array', $asDeclensions['singular']);
+      $this->assertInternalType('array', $asDeclensions['plural']);
+      
+      $this->assertEquals('mėnuo', $asDeclensions['singular']['kas']);
+      $this->assertEquals('mėnesio', $asDeclensions['singular']['ko']);
+      $this->assertEquals('mėnesį', $asDeclensions['singular']['ką']);
+      $this->assertEquals('mėnesiui', $asDeclensions['singular']['kam']);
+      $this->assertEquals('mėnesyje', $asDeclensions['singular']['kame']);
+      $this->assertEquals('mėnesiu', $asDeclensions['singular']['kuo']);
+      $this->assertEquals('mėnesi', $asDeclensions['singular']['o']);
+
+      $this->assertEquals('mėnesiai', $asDeclensions['plural']['kas']);
+      $this->assertEquals('mėnesių', $asDeclensions['plural']['ko']);
+      $this->assertEquals('mėnesius', $asDeclensions['plural']['ką']);
+      $this->assertEquals('mėnesiams', $asDeclensions['plural']['kam']);
+      $this->assertEquals('mėnesiuose', $asDeclensions['plural']['kame']);
+      $this->assertEquals('mėnesiais', $asDeclensions['plural']['kuo']);
+      $this->assertEquals('mėnesiai', $asDeclensions['plural']['o']);
+  } 
+
 }
