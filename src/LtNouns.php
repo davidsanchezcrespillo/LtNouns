@@ -865,7 +865,7 @@ class LtNouns
       
       //echo "NOUN TO CHECK: '$nounToCheck'\n";
       
-      $wordType = $this->_wordTypes->getWordType($nounToCheck);
+      $wordTypes = $this->_wordTypes->getWordType($nounToCheck);
       
       //echo "WORD TYPE: $wordType\n";
 
@@ -877,15 +877,15 @@ class LtNouns
           return $this->generateDeclensionsForMenuo();
       }
 
-      if ($wordType == LtWordTypes::REGULAR_NOUN) {
+      if (in_array(LtWordTypes::REGULAR_NOUN, $wordTypes)) {
           return $this->generateRegularDeclensions($nounToCheck);
       }
       
-      if ($wordType == LtWordTypes::IRREGULAR_MASCULINE_NOUN) {
+      if (in_array(LtWordTypes::IRREGULAR_MASCULINE_NOUN, $wordTypes)) {
           return $this->generateVDeclensions($nounToCheck);
       }
       
-      if ($wordType == LtWordTypes::IRREGULAR_FEMENINE_NOUN) {
+      if (in_array(LtWordTypes::IRREGULAR_FEMENINE_NOUN, $wordTypes)) {
           return $this->generateMDeclensions($nounToCheck);
       }
       
