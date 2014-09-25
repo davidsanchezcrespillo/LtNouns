@@ -445,8 +445,16 @@ class LtNouns
       );
   }
 
-  private function generateVDeclensionsForIs($root)
+  private function generateVDeclensionsForIs($root, $hardshipFlag)
   {
+      $pluralGenitiveEnding = "ų";
+      if ($hardshipFlag == "soft") {
+          $pluralGenitiveEnding = "ių";
+      }
+      if ($hardshipFlag == "hard") {
+          $pluralGenitiveEnding = "ų";
+      }
+      
       return array(
         "singular" => array(
           "kas" => $root . "is",
@@ -459,7 +467,7 @@ class LtNouns
         ),
         "plural" => array(
           "kas" => $root . "ys",
-          "ko" => $root . "ių",
+          "ko" => $root . $pluralGenitiveEnding,
           "ką" => $root . "is",
           "kam" => $root . "ims",
           "kame" => $root . "yse",
@@ -469,8 +477,16 @@ class LtNouns
       );
   }
 
-  private function generateVDeclensionsForTis($root)
+  private function generateVDeclensionsForTis($root, $hardshipFlag)
   {
+      $pluralGenitiveEnding = "tų";
+      if ($hardshipFlag == "soft") {
+          $pluralGenitiveEnding = "čių";
+      }
+      if ($hardshipFlag == "hard") {
+          $pluralGenitiveEnding = "tų";
+      }
+
       return array(
         "singular" => array(
           "kas" => $root . "tis",
@@ -483,7 +499,7 @@ class LtNouns
         ),
         "plural" => array(
           "kas" => $root . "tys",
-          "ko" => $root . "tų",
+          "ko" => $root . $pluralGenitiveEnding,
           "ką" => $root . "tis",
           "kam" => $root . "tims",
           "kame" => $root . "tyse",
@@ -517,8 +533,16 @@ class LtNouns
       );
   }
   
-  private function generateMDeclensionsForTis($root)
+  private function generateMDeclensionsForTis($root, $hardshipFlag)
   {
+      $pluralGenitiveEnding = "tų";
+      if ($hardshipFlag == "soft") {
+          $pluralGenitiveEnding = "čių";
+      }
+      if ($hardshipFlag == "hard") {
+          $pluralGenitiveEnding = "tų";
+      }
+      
       return array(
         "singular" => array(
           "kas" => $root . "tis",
@@ -531,7 +555,7 @@ class LtNouns
         ),
         "plural" => array(
           "kas" => $root . "tys",
-          "ko" => $root . "čių",
+          "ko" => $root . $pluralGenitiveEnding,
           "ką" => $root . "tis",
           "kam" => $root . "tims",
           "kame" => $root . "tyse",
@@ -541,21 +565,29 @@ class LtNouns
       );
   }
 
-  private function generateMDeclensionsForDis($root)
+  private function generateMDeclensionsForDis($root, $hardshipFlag)
   {
+      $pluralGenitiveEnding = "dų";
+      if ($hardshipFlag == "soft") {
+          $pluralGenitiveEnding = "džių";
+      }
+      if ($hardshipFlag == "hard") {
+          $pluralGenitiveEnding = "dų";
+      }
+
       return array(
         "singular" => array(
           "kas" => $root . "dis",
           "ko" => $root .  "dies",
           "ką" => $root . "dį",
-          "kam" => $root . "žiai",
+          "kam" => $root . "džiai",
           "kame" => $root . "dyje",
           "kuo" => $root . "dimi",
           "o" => $root . "die"
         ),
         "plural" => array(
           "kas" => $root . "dys",
-          "ko" => $root . "žių",
+          "ko" => $root . $pluralGenitiveEnding,
           "ką" => $root . "dis",
           "kam" => $root . "dims",
           "kame" => $root . "dyse",
@@ -565,8 +597,16 @@ class LtNouns
       );
   }
 
-  private function generateMDeclensionsForIs($root)
+  private function generateMDeclensionsForIs($root, $hardshipFlag)
   {
+      $pluralGenitiveEnding = "ų";
+      if ($hardshipFlag == "soft") {
+          $pluralGenitiveEnding = "ių";
+      }
+      if ($hardshipFlag == "hard") {
+          $pluralGenitiveEnding = "ų";
+      }
+
       return array(
         "singular" => array(
           "kas" => $root . "is",
@@ -579,12 +619,108 @@ class LtNouns
         ),
         "plural" => array(
           "kas" => $root . "ys",
-          "ko" => $root . "ių",
+          "ko" => $root . $pluralGenitiveEnding,
           "ką" => $root . "is",
           "kam" => $root . "ims",
           "kame" => $root . "yse",
           "kuo" => $root . "imis",
           "o" => $root . "ys"
+        )
+      );
+  }
+
+  private function generateMDeclensionsForYs($root, $hardshipFlag)
+  {
+      $pluralGenitiveEnding = "ų";
+      if ($hardshipFlag == "soft") {
+          $pluralGenitiveEnding = "ių";
+      }
+      if ($hardshipFlag == "hard") {
+          $pluralGenitiveEnding = "ų";
+      }
+
+      return array(
+        "singular" => array(
+          "kas" => "",
+          "ko" => "",
+          "ką" => "",
+          "kam" => "",
+          "kame" => "",
+          "kuo" => "",
+          "o" => ""
+        ),
+        "plural" => array(
+          "kas" => $root . "ys",
+          "ko" => $root . $pluralGenitiveEnding,
+          "ką" => $root . "is",
+          "kam" => $root . "ims",
+          "kame" => $root . "yse",
+          "kuo" => $root . "imis",
+          "o" => $root . "ys"
+        )
+      );
+  }
+
+  private function generateMDeclensionsForDys($root, $hardshipFlag)
+  {
+      $pluralGenitiveEnding = "dų";
+      if ($hardshipFlag == "soft") {
+          $pluralGenitiveEnding = "džių";
+      }
+      if ($hardshipFlag == "hard") {
+          $pluralGenitiveEnding = "dų";
+      }
+
+      return array(
+        "singular" => array(
+          "kas" => "",
+          "ko" => "",
+          "ką" => "",
+          "kam" => "",
+          "kame" => "",
+          "kuo" => "",
+          "o" => ""
+        ),
+        "plural" => array(
+          "kas" => $root . "dys",
+          "ko" => $root . $pluralGenitiveEnding,
+          "ką" => $root . "dis",
+          "kam" => $root . "dims",
+          "kame" => $root . "dyse",
+          "kuo" => $root . "dimis",
+          "o" => $root . "dys"
+        )
+      );
+  }
+  
+  private function generateMDeclensionsForTys($root, $hardshipFlag)
+  {
+      $pluralGenitiveEnding = "tų";
+      if ($hardshipFlag == "soft") {
+          $pluralGenitiveEnding = "čių";
+      }
+      if ($hardshipFlag == "hard") {
+          $pluralGenitiveEnding = "tų";
+      }
+
+      return array(
+        "singular" => array(
+          "kas" => "",
+          "ko" => "",
+          "ką" => "",
+          "kam" => "",
+          "kame" => "",
+          "kuo" => "",
+          "o" => ""
+        ),
+        "plural" => array(
+          "kas" => $root . "tys",
+          "ko" => $root . $pluralGenitiveEnding,
+          "ką" => $root . "tis",
+          "kam" => $root . "tims",
+          "kame" => $root . "tyse",
+          "kuo" => $root . "timis",
+          "o" => $root . "tys"
         )
       );
   }
@@ -794,21 +930,22 @@ class LtNouns
    * Generate all declensions for a given noun of "V" type.
    * @param string $noun The input noun, in nominative singular
    * and lowercase.
+   * @param string $hardshipFlag whether to soften or not the plural genitive.
    * @return array containing all the declensions,
    * in singular and plural forms.
    */
-  private function generateVDeclensions($noun)
+  private function generateVDeclensions($noun, $hardshipFlag)
   {
       // Possible endings:
       // -jas, -ias, -as, -is, -ys, -ia, -a, -ė, -ius, -us, -uo
 
       if (preg_match('/(.*)tis$/', $noun, $matches)) {
           $root = $matches[1];
-          return $this->generateVDeclensionsForTis($root);
+          return $this->generateVDeclensionsForTis($root, $hardshipFlag);
       }
       if (preg_match('/(.*)is$/', $noun, $matches)) {
           $root = $matches[1];
-          return $this->generateVDeclensionsForIs($root);
+          return $this->generateVDeclensionsForIs($root, $hardshipFlag);
       }
       if (preg_match('/(.*)uo$/', $noun, $matches)) {
           $root = $matches[1];
@@ -821,25 +958,38 @@ class LtNouns
    * Generate all declensions for a given noun of "M" type.
    * @param string $noun The input noun, in nominative singular
    * and lowercase.
+   * @param string $hardshipFlag whether to soften or not the plural genitive.
    * @return array containing all the declensions,
    * in singular and plural forms.
    */
-  private function generateMDeclensions($noun)
+  private function generateMDeclensions($noun, $hardshipFlag)
   {
       // Possible endings:
       // -jas, -ias, -as, -is, -ys, -ia, -a, -ė, -ius, -us, -uo
 
       if (preg_match('/(.*)tis$/', $noun, $matches)) {
           $root = $matches[1];
-          return $this->generateMDeclensionsForTis($root);
+          return $this->generateMDeclensionsForTis($root, $hardshipFlag);
       }
       if (preg_match('/(.*)dis$/', $noun, $matches)) {
           $root = $matches[1];
-          return $this->generateMDeclensionsForDis($root);
+          return $this->generateMDeclensionsForDis($root, $hardshipFlag);
       }
       if (preg_match('/(.*)is$/', $noun, $matches)) {
           $root = $matches[1];
-          return $this->generateMDeclensionsForIs($root);
+          return $this->generateMDeclensionsForIs($root, $hardshipFlag);
+      }
+      if (preg_match('/(.*)tys$/', $noun, $matches)) {
+          $root = $matches[1];
+          return $this->generateMDeclensionsForTys($root, $hardshipFlag);
+      }
+      if (preg_match('/(.*)dys$/', $noun, $matches)) {
+          $root = $matches[1];
+          return $this->generateMDeclensionsForDys($root, $hardshipFlag);
+      }
+      if (preg_match('/(.*)ys$/', $noun, $matches)) {
+          $root = $matches[1];
+          return $this->generateMDeclensionsForYs($root, $hardshipFlag);
       }
       if (preg_match('/(.*)uo$/', $noun, $matches)) {
           $root = $matches[1];
@@ -867,6 +1017,14 @@ class LtNouns
       
       $wordTypes = $this->_wordTypes->getWordType($nounToCheck);
       
+      // Get the "hardship flag" for certain types of nouns
+      $hardshipFlag = "hard";
+      if (in_array(LtWordTypes::SOFT_GENITIVE_NOUN, $wordTypes)) {
+          $hardshipFlag = "soft";
+      }
+      if (in_array(LtWordTypes::HARD_GENITIVE_NOUN, $wordTypes)) {
+          $hardshipFlag = "hard";
+      }
       //echo "WORD TYPE: $wordType\n";
 
       if ($nounToCheck =='šuo') {
@@ -877,16 +1035,16 @@ class LtNouns
           return $this->generateDeclensionsForMenuo();
       }
 
-      if (in_array(LtWordTypes::REGULAR_NOUN, $wordTypes)) {
-          return $this->generateRegularDeclensions($nounToCheck);
-      }
-      
       if (in_array(LtWordTypes::IRREGULAR_MASCULINE_NOUN, $wordTypes)) {
-          return $this->generateVDeclensions($nounToCheck);
+          return $this->generateVDeclensions($nounToCheck, $hardshipFlag);
       }
       
       if (in_array(LtWordTypes::IRREGULAR_FEMENINE_NOUN, $wordTypes)) {
-          return $this->generateMDeclensions($nounToCheck);
+          return $this->generateMDeclensions($nounToCheck, $hardshipFlag);
+      }
+      
+      if (in_array(LtWordTypes::REGULAR_NOUN, $wordTypes)) {
+          return $this->generateRegularDeclensions($nounToCheck);
       }
       
       return "";
