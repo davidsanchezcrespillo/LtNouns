@@ -785,9 +785,7 @@ class LtNouns
    */
   private function generateRegularDeclensions($noun)
   {
-      // Possible endings:
-      // -jas, -ias, -as, -is, -ys, -ia, -a, -ė, -ius, -us, -uo
-
+      // Possible endings
       $endings = array(
           "jas", "ias", "as", "a", "dė", "tė", "ė", "ius", "jus", "us",
           "dis", "tis", "jis", "is", "dys", "jys", "tys", "ys"
