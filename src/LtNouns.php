@@ -376,6 +376,70 @@ class LtNouns
     ),
   );
 
+
+  protected $_vEndings = array(
+    "is" => array(
+        "singular" => array(
+          "kas" => "is",
+          "ko" => "ies",
+          "ką" => "į",
+          "kam" => "iui",
+          "kame" => "yje",
+          "kuo" => "imi",
+          "o" => "ie"
+        ),
+        "plural" => array(
+          "kas" => "ys",
+          "ko" => array("hard" => "ų", "soft" => "ių"),
+          "ką" => "is",
+          "kam" => "ims",
+          "kame" => "yse",
+          "kuo" => "imis",
+          "o" => "ys"
+        ),
+    ),
+    "tis" => array(
+        "singular" => array(
+          "kas" => "tis",
+          "ko" => "ties",
+          "ką" => "tį",
+          "kam" => "čiui",
+          "kame" => "tyje",
+          "kuo" => "timi",
+          "o" => "tie"
+        ),
+        "plural" => array(
+          "kas" => "tys",
+          "ko" => array("hard" => "tų", "soft" => "čių"),
+          "ką" => "tis",
+          "kam" => "tims",
+          "kame" => "tyse",
+          "kuo" => "timis",
+          "o" => "tys"
+        ),
+    ),
+    "uo" => array(
+        "singular" => array(
+          "kas" => "uo",
+          "ko" => "ens",
+          "ką" => "enį",
+          "kam" => "eniui",
+          "kame" => "enyje",
+          "kuo" => "eniu",
+          "o" => "enie"
+        ),
+        "plural" => array(
+          "kas" => "enys",
+          "ko" => array("hard" => "enų", "soft" => "enų"),
+          "ką" => "enis",
+          "kam" => "enims",
+          "kame" => "enyse",
+          "kuo" => "enimis",
+          "o" => "enys"
+        ),
+    ),
+  );
+
   private function getRegularDeclensions($root, $ending)
   {
       return array(
@@ -400,94 +464,30 @@ class LtNouns
       );
   }
 
-  private function generateVDeclensionsForIs($root, $hardshipFlag)
+  private function getVDeclensions($root, $ending, $hardshipFlag)
   {
-      $pluralGenitiveEnding = "ų";
-      if ($hardshipFlag == "soft") {
-          $pluralGenitiveEnding = "ių";
-      }
-      if ($hardshipFlag == "hard") {
-          $pluralGenitiveEnding = "ų";
-      }
-      
       return array(
         "singular" => array(
-          "kas" => $root . "is",
-          "ko" => $root .  "ies",
-          "ką" => $root . "į",
-          "kam" => $root . "iui",
-          "kame" => $root . "yje",
-          "kuo" => $root . "imi",
-          "o" => $root . "ie"
+          "kas" => $root . $this->_vEndings[$ending]["singular"]["kas"],
+          "ko" => $root . $this->_vEndings[$ending]["singular"]["ko"],
+          "ką" => $root . $this->_vEndings[$ending]["singular"]["ką"],
+          "kam" => $root . $this->_vEndings[$ending]["singular"]["kam"],
+          "kame" => $root . $this->_vEndings[$ending]["singular"]["kame"],
+          "kuo" => $root . $this->_vEndings[$ending]["singular"]["kuo"],
+          "o" => $root . $this->_vEndings[$ending]["singular"]["o"],
         ),
         "plural" => array(
-          "kas" => $root . "ys",
-          "ko" => $root . $pluralGenitiveEnding,
-          "ką" => $root . "is",
-          "kam" => $root . "ims",
-          "kame" => $root . "yse",
-          "kuo" => $root . "imis",
-          "o" => $root . "ys"
+          "kas" => $root . $this->_vEndings[$ending]["plural"]["kas"],
+          "ko" => $root . $this->_vEndings[$ending]["plural"]["ko"][$hardshipFlag],
+          "ką" => $root . $this->_vEndings[$ending]["plural"]["ką"],
+          "kam" => $root . $this->_vEndings[$ending]["plural"]["kam"],
+          "kame" => $root . $this->_vEndings[$ending]["plural"]["kame"],
+          "kuo" => $root . $this->_vEndings[$ending]["plural"]["kuo"],
+          "o" => $root . $this->_vEndings[$ending]["plural"]["o"],
         )
       );
   }
 
-  private function generateVDeclensionsForTis($root, $hardshipFlag)
-  {
-      $pluralGenitiveEnding = "tų";
-      if ($hardshipFlag == "soft") {
-          $pluralGenitiveEnding = "čių";
-      }
-      if ($hardshipFlag == "hard") {
-          $pluralGenitiveEnding = "tų";
-      }
-
-      return array(
-        "singular" => array(
-          "kas" => $root . "tis",
-          "ko" => $root .  "ties",
-          "ką" => $root . "tį",
-          "kam" => $root . "čiui",
-          "kame" => $root . "tyje",
-          "kuo" => $root . "timi",
-          "o" => $root . "tie"
-        ),
-        "plural" => array(
-          "kas" => $root . "tys",
-          "ko" => $root . $pluralGenitiveEnding,
-          "ką" => $root . "tis",
-          "kam" => $root . "tims",
-          "kame" => $root . "tyse",
-          "kuo" => $root . "timis",
-          "o" => $root . "tys"
-        )
-      );
-  }
-
-  private function generateVDeclensionsForUo($root)
-  {
-      return array(
-        "singular" => array(
-          "kas" => $root . "uo",
-          "ko" => $root .  "ens",
-          "ką" => $root . "enį",
-          "kam" => $root . "eniui",
-          "kame" => $root . "enyje",
-          "kuo" => $root . "eniu",
-          "o" => $root . "enie"
-        ),
-        "plural" => array(
-          "kas" => $root . "enys",
-          "ko" => $root . "enų",
-          "ką" => $root . "enis",
-          "kam" => $root . "enims",
-          "kame" => $root . "enyse",
-          "kuo" => $root . "enimis",
-          "o" => $root . "enys"
-        )
-      );
-  }
-  
   private function generateMDeclensionsForTis($root, $hardshipFlag)
   {
       $pluralGenitiveEnding = "tų";
@@ -811,21 +811,16 @@ class LtNouns
    */
   private function generateVDeclensions($noun, $hardshipFlag)
   {
-      // Possible endings:
-      // -jas, -ias, -as, -is, -ys, -ia, -a, -ė, -ius, -us, -uo
+      // Possible endings
+      $endings = array("tis", "is", "uo");
 
-      if (preg_match('/(.*)tis$/', $noun, $matches)) {
-          $root = $matches[1];
-          return $this->generateVDeclensionsForTis($root, $hardshipFlag);
+      foreach ($endings as $ending) {
+          if (preg_match('/(.*)'. $ending . '$/', $noun, $matches)) {
+              $root = $matches[1];
+              return $this->getVDeclensions($root, $ending, $hardshipFlag);
+          }
       }
-      if (preg_match('/(.*)is$/', $noun, $matches)) {
-          $root = $matches[1];
-          return $this->generateVDeclensionsForIs($root, $hardshipFlag);
-      }
-      if (preg_match('/(.*)uo$/', $noun, $matches)) {
-          $root = $matches[1];
-          return $this->generateVDeclensionsForUo($root);
-      }
+
       return "";
   }
 
