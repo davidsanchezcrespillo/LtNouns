@@ -14,7 +14,7 @@ class LtNouns
   protected $_wordTypes;
 
   protected $_regularEndings = array(
-    "e" => array(
+    "ė" => array(
         "singular" => array(
           "kas" => "ė",
           "ko" => "ės",
@@ -34,7 +34,7 @@ class LtNouns
           "o" => "ės"
         ),
     ),
-    "te" => array(
+    "tė" => array(
         "singular" => array(
           "kas" => "tė",
           "ko" => "tės",
@@ -54,7 +54,7 @@ class LtNouns
           "o" => "tės"
         ),
     ),
-    "de" => array(
+    "dė" => array(
         "singular" => array(
           "kas" => "dė",
           "ko" => "dės",
@@ -788,94 +788,16 @@ class LtNouns
       // Possible endings:
       // -jas, -ias, -as, -is, -ys, -ia, -a, -ė, -ius, -us, -uo
 
-      if (preg_match('/(.*)jas$/', $noun, $matches)) {
-          $root = $matches[1];
-          return $this->getRegularDeclensions($root, "jas");
-      }
-
-      if (preg_match('/(.*)ias$/', $noun, $matches)) {
-          $root = $matches[1];
-          return $this->getRegularDeclensions($root, "ias");
-      }
-
-      if (preg_match('/(.*)as$/', $noun, $matches)) {
-          $root = $matches[1];
-          return $this->getRegularDeclensions($root, "as");
-      }
-
-      if (preg_match('/(.*)a$/', $noun, $matches)) {
-          $root = $matches[1];
-          return $this->getRegularDeclensions($root, "a");
-      }
+      $endings = array(
+          "jas", "ias", "as", "a", "dė", "tė", "ė", "ius", "jus", "us",
+          "dis", "tis", "jis", "is", "dys", "jys", "tys", "ys"
+      );
       
-      if (preg_match('/(.*)dė$/', $noun, $matches)) {
-          $root = $matches[1];
-          return $this->getRegularDeclensions($root, "de");
-      }
-
-      if (preg_match('/(.*)tė$/', $noun, $matches)) {
-          $root = $matches[1];
-          return $this->getRegularDeclensions($root, "te");
-      }
-
-      if (preg_match('/(.*)ė$/', $noun, $matches)) {
-          $root = $matches[1];
-          return $this->getRegularDeclensions($root, "e");
-      }
-
-      if (preg_match('/(.*)ius$/', $noun, $matches)) {
-          $root = $matches[1];
-          return $this->getRegularDeclensions($root, "ius");
-      }
-
-      if (preg_match('/(.*)jus$/', $noun, $matches)) {
-          $root = $matches[1];
-          return $this->getRegularDeclensions($root, "jus");
-      }
-
-      if (preg_match('/(.*)us$/', $noun, $matches)) {
-          $root = $matches[1];
-          return $this->getRegularDeclensions($root, "us");
-      }
-
-      if (preg_match('/(.*)dis$/', $noun, $matches)) {
-          $root = $matches[1];
-          return $this->getRegularDeclensions($root, "dis");
-      }
-      
-      if (preg_match('/(.*)tis$/', $noun, $matches)) {
-          $root = $matches[1];
-          return $this->getRegularDeclensions($root, "tis");
-      }
-
-      if (preg_match('/(.*)jis$/', $noun, $matches)) {
-          $root = $matches[1];
-          return $this->getRegularDeclensions($root, "jis");
-      }
-
-      if (preg_match('/(.*)is$/', $noun, $matches)) {
-          $root = $matches[1];
-          return $this->getRegularDeclensions($root, "is");
-      }
-
-      if (preg_match('/(.*)dys$/', $noun, $matches)) {
-          $root = $matches[1];
-          return $this->getRegularDeclensions($root, "dys");
-      }
-
-      if (preg_match('/(.*)jys$/', $noun, $matches)) {
-          $root = $matches[1];
-          return $this->getRegularDeclensions($root, "jys");
-      }
-
-      if (preg_match('/(.*)tys$/', $noun, $matches)) {
-          $root = $matches[1];
-          return $this->getRegularDeclensions($root, "tys");
-      }
-
-      if (preg_match('/(.*)ys$/', $noun, $matches)) {
-          $root = $matches[1];
-          return $this->getRegularDeclensions($root, "ys");
+      foreach ($endings as $ending) {
+          if (preg_match('/(.*)'. $ending . '$/', $noun, $matches)) {
+              $root = $matches[1];
+              return $this->getRegularDeclensions($root, $ending);
+          }
       }
 
       return "";
