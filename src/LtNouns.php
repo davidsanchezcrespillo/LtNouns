@@ -13,434 +13,389 @@ class LtNouns
   // Service to get the word type for a given noun
   protected $_wordTypes;
 
-  private function generateDeclensionsForE($root)
-  {
-      return array(
+  protected $_regularEndings = array(
+    "e" => array(
         "singular" => array(
-          "kas" => $root . "ė",
-          "ko" => $root .  "ės",
-          "ką" => $root . "ę",
-          "kam" => $root . "ei",
-          "kame" => $root . "ėje",
-          "kuo" => $root . "e",
-          "o" => $root . "e"
+          "kas" => "ė",
+          "ko" => "ės",
+          "ką" => "ę",
+          "kam" => "ei",
+          "kame" => "ėje",
+          "kuo" => "e",
+          "o" => "e"
         ),
         "plural" => array(
-          "kas" => $root . "ės",
-          "ko" => $root . "ių",
-          "ką" => $root . "es",
-          "kam" => $root . "ėms",
-          "kame" => $root . "ėse",
-          "kuo" => $root . "ėmis",
-          "o" => $root . "ės"
-        )
-      );
-  }
+          "kas" => "ės",
+          "ko" => "ių",
+          "ką" => "es",
+          "kam" => "ėms",
+          "kame" => "ėse",
+          "kuo" => "ėmis",
+          "o" => "ės"
+        ),
+    ),
+    "te" => array(
+        "singular" => array(
+          "kas" => "tė",
+          "ko" => "tės",
+          "ką" => "tę",
+          "kam" => "tei",
+          "kame" => "tėje",
+          "kuo" => "te",
+          "o" => "te"
+        ),
+        "plural" => array(
+          "kas" => "tės",
+          "ko" => "čių",
+          "ką" => "tes",
+          "kam" => "tėms",
+          "kame" => "tėse",
+          "kuo" => "tėmis",
+          "o" => "tės"
+        ),
+    ),
+    "de" => array(
+        "singular" => array(
+          "kas" => "dė",
+          "ko" => "dės",
+          "ką" => "dę",
+          "kam" => "dei",
+          "kame" => "dėje",
+          "kuo" => "de",
+          "o" => "de"
+        ),
+        "plural" => array(
+          "kas" => "dės",
+          "ko" => "džių",
+          "ką" => "des",
+          "kam" => "dėms",
+          "kame" => "dėse",
+          "kuo" => "dėmis",
+          "o" => "dės"
+        ),
+    ),
+    "a" => array(
+        "singular" => array(
+          "kas" => "a",
+          "ko" => "os",
+          "ką" => "ą",
+          "kam" => "ai",
+          "kame" => "oje",
+          "kuo" => "a",
+          "o" => "a"
+        ),
+        "plural" => array(
+          "kas" => "os",
+          "ko" => "ų",
+          "ką" => "as",
+          "kam" => "oms",
+          "kame" => "ose",
+          "kuo" => "omis",
+          "o" => "os"
+        ),
+    ),
+    "as" => array(
+        "singular" => array(
+          "kas" => "as",
+          "ko" => "o",
+          "ką" => "ą",
+          "kam" => "ui",
+          "kame" => "e",
+          "kuo" => "u",
+          "o" => "e"
+        ),
+        "plural" => array(
+          "kas" => "ai",
+          "ko" => "ų",
+          "ką" => "us",
+          "kam" => "ams",
+          "kame" => "uose",
+          "kuo" => "ais",
+          "o" => "ai"
+        ),
+    ),
+    "ias" => array(
+        "singular" => array(
+          "kas" => "ias",
+          "ko" => "io",
+          "ką" => "ią",
+          "kam" => "iui",
+          "kame" => "yje",
+          "kuo" => "iu",
+          "o" => "y"
+        ),
+        "plural" => array(
+          "kas" => "iai",
+          "ko" => "ių",
+          "ką" => "ius",
+          "kam" => "iams",
+          "kame" => "iuose",
+          "kuo" => "iais",
+          "o" => "iai"
+        ),
+    ),
+    "jas" => array(
+        "singular" => array(
+          "kas" => "jas",
+          "ko" => "jo",
+          "ką" => "ją",
+          "kam" => "jui",
+          "kame" => "juje",
+          "kuo" => "ju",
+          "o" => "jau"
+        ),
+        "plural" => array(
+          "kas" => "jai",
+          "ko" => "jų",
+          "ką" => "jus",
+          "kam" => "jams",
+          "kame" => "juose",
+          "kuo" => "jais",
+          "o" => "jai"
+       ),
+    ),
+    "is" => array(
+        "singular" => array(
+          "kas" => "is",
+          "ko" => "io",
+          "ką" => "į",
+          "kam" => "iui",
+          "kame" => "yje",
+          "kuo" => "iu",
+          "o" => "i"
+        ),
+        "plural" => array(
+          "kas" => "iai",
+          "ko" => "ių",
+          "ką" => "ius",
+          "kam" => "iams",
+          "kame" => "iuose",
+          "kuo" => "iais",
+          "o" => "iai"
+       ),
+    ),
+    "dis" => array(
+        "singular" => array(
+          "kas" => "dis",
+          "ko" => "džio",
+          "ką" => "dį",
+          "kam" => "džiui",
+          "kame" => "dyje",
+          "kuo" => "džiu",
+          "o" => "di"
+        ),
+        "plural" => array(
+          "kas" => "džiai",
+          "ko" => "džių",
+          "ką" => "džius",
+          "kam" => "džiams",
+          "kame" => "džiuose",
+          "kuo" => "džiais",
+          "o" => "džiai"
+       ),
+    ),
+    "tis" => array(
+        "singular" => array(
+          "kas" => "tis",
+          "ko" => "čio",
+          "ką" => "tį",
+          "kam" => "čiui",
+          "kame" => "tyje",
+          "kuo" => "čiu",
+          "o" => "ti"
+        ),
+        "plural" => array(
+          "kas" => "čiai",
+          "ko" => "čių",
+          "ką" => "čius",
+          "kam" => "čiams",
+          "kame" => "čiuose",
+          "kuo" => "čiais",
+          "o" => "čiai"
+       ),
+    ),
+    "jis" => array(
+        "singular" => array(
+          "kas" => "jis",
+          "ko" => "jo",
+          "ką" => "jį",
+          "kam" => "jui",
+          "kame" => "jyje",
+          "kuo" => "ju",
+          "o" => "ji"
+        ),
+        "plural" => array(
+          "kas" => "jai",
+          "ko" => "jų",
+          "ką" => "jus",
+          "kam" => "jams",
+          "kame" => "juose",
+          "kuo" => "jais",
+          "o" => "jai"
+       ),
+    ),
+    "ys" => array(
+        "singular" => array(
+          "kas" => "ys",
+          "ko" => "io",
+          "ką" => "į",
+          "kam" => "iui",
+          "kame" => "yje",
+          "kuo" => "iu",
+          "o" => "y"
+        ),
+        "plural" => array(
+          "kas" => "iai",
+          "ko" => "ių",
+          "ką" => "ius",
+          "kam" => "iams",
+          "kame" => "iuose",
+          "kuo" => "iais",
+          "o" => "iai"
+       ),
+    ),
+    "dys" => array(
+        "singular" => array(
+          "kas" => "dys",
+          "ko" => "džio",
+          "ką" => "dį",
+          "kam" => "džiui",
+          "kame" => "dyje",
+          "kuo" => "džiu",
+          "o" => "dy"
+        ),
+        "plural" => array(
+          "kas" => "džiai",
+          "ko" => "džių",
+          "ką" => "džius",
+          "kam" => "džiams",
+          "kame" => "džiuose",
+          "kuo" => "džiais",
+          "o" => "džiai"
+       ),
+    ),
+    "jys" => array(
+        "singular" => array(
+          "kas" => "jys",
+          "ko" => "jo",
+          "ką" => "jį",
+          "kam" => "jui",
+          "kame" => "jyje",
+          "kuo" => "ju",
+          "o" => "jy"
+        ),
+        "plural" => array(
+          "kas" => "jai",
+          "ko" => "jų",
+          "ką" => "jus",
+          "kam" => "jams",
+          "kame" => "juose",
+          "kuo" => "jais",
+          "o" => "jai"
+       ),
+    ),
+    "tys" => array(
+        "singular" => array(
+          "kas" => "tys",
+          "ko" => "čio",
+          "ką" => "tį",
+          "kam" => "čiui",
+          "kame" => "tyje",
+          "kuo" => "čiu",
+          "o" => "ty"
+        ),
+        "plural" => array(
+          "kas" => "čiai",
+          "ko" => "čių",
+          "ką" => "čius",
+          "kam" => "čiams",
+          "kame" => "čiuose",
+          "kuo" => "čiais",
+          "o" => "čiai"
+       ),
+    ),
+    "us" => array(
+        "singular" => array(
+          "kas" => "us",
+          "ko" => "aus",
+          "ką" => "ų",
+          "kam" => "ui",
+          "kame" => "uje",
+          "kuo" => "umi",
+          "o" => "au"
+        ),
+        "plural" => array(
+          "kas" => "ūs",
+          "ko" => "ų",
+          "ką" => "us",
+          "kam" => "ums",
+          "kame" => "uose",
+          "kuo" => "umis",
+          "o" => "ūs"
+       ),
+    ),
+    "ius" => array(
+        "singular" => array(
+          "kas" => "ius",
+          "ko" => "iaus",
+          "ką" => "ių",
+          "kam" => "iui",
+          "kame" => "iuje",
+          "kuo" => "iumi",
+          "o" => "iau"
+        ),
+        "plural" => array(
+          "kas" => "iai",
+          "ko" => "ių",
+          "ką" => "ius",
+          "kam" => "iams",
+          "kame" => "iuose",
+          "kuo" => "iais",
+          "o" => "iai"
+       ),
+    ),
+    "jus" => array(
+        "singular" => array(
+          "kas" => "jus",
+          "ko" => "jaus",
+          "ką" => "jų",
+          "kam" => "jui",
+          "kame" => "juje",
+          "kuo" => "jumi",
+          "o" => "jau"
+        ),
+        "plural" => array(
+          "kas" => "jūs",
+          "ko" => "jų",
+          "ką" => "jus",
+          "kam" => "jams",
+          "kame" => "juose",
+          "kuo" => "jais",
+          "o" => "jūs"
+       ),
+    ),
+  );
 
-  private function generateDeclensionsForTe($root)
+  private function getRegularDeclensions($root, $ending)
   {
       return array(
         "singular" => array(
-          "kas" => $root . "tė",
-          "ko" => $root .  "tės",
-          "ką" => $root . "tę",
-          "kam" => $root . "tei",
-          "kame" => $root . "tėje",
-          "kuo" => $root . "te",
-          "o" => $root . "te"
+          "kas" => $root . $this->_regularEndings[$ending]["singular"]["kas"],
+          "ko" => $root . $this->_regularEndings[$ending]["singular"]["ko"],
+          "ką" => $root . $this->_regularEndings[$ending]["singular"]["ką"],
+          "kam" => $root . $this->_regularEndings[$ending]["singular"]["kam"],
+          "kame" => $root . $this->_regularEndings[$ending]["singular"]["kame"],
+          "kuo" => $root . $this->_regularEndings[$ending]["singular"]["kuo"],
+          "o" => $root . $this->_regularEndings[$ending]["singular"]["o"],
         ),
         "plural" => array(
-          "kas" => $root . "tės",
-          "ko" => $root . "čių",
-          "ką" => $root . "tes",
-          "kam" => $root . "tėms",
-          "kame" => $root . "tėse",
-          "kuo" => $root . "tėmis",
-          "o" => $root . "tės"
-        )
-      );
-  }
-
-  private function generateDeclensionsForDe($root)
-  {
-      return array(
-        "singular" => array(
-          "kas" => $root . "dė",
-          "ko" => $root .  "dės",
-          "ką" => $root . "dę",
-          "kam" => $root . "dei",
-          "kame" => $root . "dėje",
-          "kuo" => $root . "de",
-          "o" => $root . "de"
-        ),
-        "plural" => array(
-          "kas" => $root . "dės",
-          "ko" => $root . "džių",
-          "ką" => $root . "des",
-          "kam" => $root . "dėms",
-          "kame" => $root . "dėse",
-          "kuo" => $root . "dėmis",
-          "o" => $root . "dės"
-        )
-      );
-  }
-
-  private function generateDeclensionsForA($root)
-  {
-      return array(
-        "singular" => array(
-          "kas" => $root . "a",
-          "ko" => $root .  "os",
-          "ką" => $root . "ą",
-          "kam" => $root . "ai",
-          "kame" => $root . "oje",
-          "kuo" => $root . "a",
-          "o" => $root . "a"
-        ),
-        "plural" => array(
-          "kas" => $root . "os",
-          "ko" => $root . "ų",
-          "ką" => $root . "as",
-          "kam" => $root . "oms",
-          "kame" => $root . "ose",
-          "kuo" => $root . "omis",
-          "o" => $root . "os"
-        )
-      );
-  }
-
-  private function generateDeclensionsForAs($root)
-  {
-      return array(
-        "singular" => array(
-          "kas" => $root . "as",
-          "ko" => $root .  "o",
-          "ką" => $root . "ą",
-          "kam" => $root . "ui",
-          "kame" => $root . "e",
-          "kuo" => $root . "u",
-          "o" => $root . "e"
-        ),
-        "plural" => array(
-          "kas" => $root . "ai",
-          "ko" => $root . "ų",
-          "ką" => $root . "us",
-          "kam" => $root . "ams",
-          "kame" => $root . "uose",
-          "kuo" => $root . "ais",
-          "o" => $root . "ai"
-        )
-      );
-  }
- 
-  private function generateDeclensionsForIas($root)
-  {
-      return array(
-        "singular" => array(
-          "kas" => $root . "ias",
-          "ko" => $root .  "io",
-          "ką" => $root . "ią",
-          "kam" => $root . "iui",
-          "kame" => $root . "yje",
-          "kuo" => $root . "iu",
-          "o" => $root . "y"
-        ),
-        "plural" => array(
-          "kas" => $root . "iai",
-          "ko" => $root . "ių",
-          "ką" => $root . "ius",
-          "kam" => $root . "iams",
-          "kame" => $root . "iuose",
-          "kuo" => $root . "iais",
-          "o" => $root . "iai"
-        )
-      );
-  }
-
-  private function generateDeclensionsForJas($root)
-  {
-      return array(
-        "singular" => array(
-          "kas" => $root . "jas",
-          "ko" => $root .  "jo",
-          "ką" => $root . "ją",
-          "kam" => $root . "jui",
-          "kame" => $root . "juje",
-          "kuo" => $root . "ju",
-          "o" => $root . "jau"
-        ),
-        "plural" => array(
-          "kas" => $root . "jai",
-          "ko" => $root . "jų",
-          "ką" => $root . "jus",
-          "kam" => $root . "jams",
-          "kame" => $root . "juose",
-          "kuo" => $root . "jais",
-          "o" => $root . "jai"
-        )
-      );
-  }
-
-  private function generateDeclensionsForIs($root)
-  {
-      return array(
-        "singular" => array(
-          "kas" => $root . "is",
-          "ko" => $root .  "io",
-          "ką" => $root . "į",
-          "kam" => $root . "iui",
-          "kame" => $root . "yje",
-          "kuo" => $root . "iu",
-          "o" => $root . "i"
-        ),
-        "plural" => array(
-          "kas" => $root . "iai",
-          "ko" => $root . "ių",
-          "ką" => $root . "ius",
-          "kam" => $root . "iams",
-          "kame" => $root . "iuose",
-          "kuo" => $root . "iais",
-          "o" => $root . "iai"
-        )
-      );
-  }
-
-  private function generateDeclensionsForDis($root)
-  {
-      return array(
-        "singular" => array(
-          "kas" => $root . "dis",
-          "ko" => $root .  "džio",
-          "ką" => $root . "dį",
-          "kam" => $root . "džiui",
-          "kame" => $root . "dyje",
-          "kuo" => $root . "džiu",
-          "o" => $root . "di"
-        ),
-        "plural" => array(
-          "kas" => $root . "džiai",
-          "ko" => $root . "džių",
-          "ką" => $root . "džius",
-          "kam" => $root . "džiams",
-          "kame" => $root . "džiuose",
-          "kuo" => $root . "džiais",
-          "o" => $root . "džiai"
-        )
-      );
-  }
-
-  private function generateDeclensionsForTis($root)
-  {
-      return array(
-        "singular" => array(
-          "kas" => $root . "tis",
-          "ko" => $root .  "čio",
-          "ką" => $root . "tį",
-          "kam" => $root . "čiui",
-          "kame" => $root . "tyje",
-          "kuo" => $root . "čiu",
-          "o" => $root . "ti"
-        ),
-        "plural" => array(
-          "kas" => $root . "čiai",
-          "ko" => $root . "čių",
-          "ką" => $root . "čius",
-          "kam" => $root . "čiams",
-          "kame" => $root . "čiuose",
-          "kuo" => $root . "čiais",
-          "o" => $root . "čiai"
-        )
-      );
-  }
-
-  private function generateDeclensionsForJis($root)
-  {
-      return array(
-        "singular" => array(
-          "kas" => $root . "jis",
-          "ko" => $root .  "jo",
-          "ką" => $root . "jį",
-          "kam" => $root . "jui",
-          "kame" => $root . "jyje",
-          "kuo" => $root . "ju",
-          "o" => $root . "ji"
-        ),
-        "plural" => array(
-          "kas" => $root . "jai",
-          "ko" => $root . "jų",
-          "ką" => $root . "jus",
-          "kam" => $root . "jams",
-          "kame" => $root . "juose",
-          "kuo" => $root . "jais",
-          "o" => $root . "jai"
-        )
-      );
-  }
-
-  private function generateDeclensionsForYs($root)
-  {
-      return array(
-        "singular" => array(
-          "kas" => $root . "ys",
-          "ko" => $root .  "io",
-          "ką" => $root . "į",
-          "kam" => $root . "iui",
-          "kame" => $root . "yje",
-          "kuo" => $root . "iu",
-          "o" => $root . "y"
-        ),
-        "plural" => array(
-          "kas" => $root . "iai",
-          "ko" => $root . "ių",
-          "ką" => $root . "ius",
-          "kam" => $root . "iams",
-          "kame" => $root . "iuose",
-          "kuo" => $root . "iais",
-          "o" => $root . "iai"
-        )
-      );
-  }
-
-  private function generateDeclensionsForDys($root)
-  {
-      return array(
-        "singular" => array(
-          "kas" => $root . "dys",
-          "ko" => $root .  "džio",
-          "ką" => $root . "dį",
-          "kam" => $root . "džiui",
-          "kame" => $root . "dyje",
-          "kuo" => $root . "džiu",
-          "o" => $root . "dy"
-        ),
-        "plural" => array(
-          "kas" => $root . "džiai",
-          "ko" => $root . "džių",
-          "ką" => $root . "džius",
-          "kam" => $root . "džiams",
-          "kame" => $root . "džiuose",
-          "kuo" => $root . "džiais",
-          "o" => $root . "džiai"
-        )
-      );
-  }
-
-  private function generateDeclensionsForJys($root)
-  {
-      return array(
-        "singular" => array(
-          "kas" => $root . "jys",
-          "ko" => $root .  "jo",
-          "ką" => $root . "jį",
-          "kam" => $root . "jui",
-          "kame" => $root . "jyje",
-          "kuo" => $root . "ju",
-          "o" => $root . "jy"
-        ),
-        "plural" => array(
-          "kas" => $root . "jai",
-          "ko" => $root . "jų",
-          "ką" => $root . "jus",
-          "kam" => $root . "jams",
-          "kame" => $root . "juose",
-          "kuo" => $root . "jais",
-          "o" => $root . "jai"
-        )
-      );
-  }
-
-  private function generateDeclensionsForTys($root)
-  {
-      return array(
-        "singular" => array(
-          "kas" => $root . "tys",
-          "ko" => $root .  "čio",
-          "ką" => $root . "tį",
-          "kam" => $root . "čiui",
-          "kame" => $root . "tyje",
-          "kuo" => $root . "čiu",
-          "o" => $root . "ty"
-        ),
-        "plural" => array(
-          "kas" => $root . "čiai",
-          "ko" => $root . "čių",
-          "ką" => $root . "čius",
-          "kam" => $root . "čiams",
-          "kame" => $root . "čiuose",
-          "kuo" => $root . "čiais",
-          "o" => $root . "čiai"
-        )
-      );
-  }
-
-  private function generateDeclensionsForUs($root)
-  {
-      return array(
-        "singular" => array(
-          "kas" => $root . "us",
-          "ko" => $root .  "aus",
-          "ką" => $root . "ų",
-          "kam" => $root . "ui",
-          "kame" => $root . "uje",
-          "kuo" => $root . "umi",
-          "o" => $root . "au"
-        ),
-        "plural" => array(
-          "kas" => $root . "ūs",
-          "ko" => $root . "ų",
-          "ką" => $root . "us",
-          "kam" => $root . "ums",
-          "kame" => $root . "uose",
-          "kuo" => $root . "umis",
-          "o" => $root . "ūs"
-        )
-      );
-  }
-
-  private function generateDeclensionsForIus($root)
-  {
-      return array(
-        "singular" => array(
-          "kas" => $root . "ius",
-          "ko" => $root .  "iaus",
-          "ką" => $root . "ių",
-          "kam" => $root . "iui",
-          "kame" => $root . "iuje",
-          "kuo" => $root . "iumi",
-          "o" => $root . "iau"
-        ),
-        "plural" => array(
-          "kas" => $root . "iai",
-          "ko" => $root . "ių",
-          "ką" => $root . "ius",
-          "kam" => $root . "iams",
-          "kame" => $root . "iuose",
-          "kuo" => $root . "iais",
-          "o" => $root . "iai"
-        )
-      );
-  }
-
-  private function generateDeclensionsForJus($root)
-  {
-      return array(
-        "singular" => array(
-          "kas" => $root . "jus",
-          "ko" => $root .  "jaus",
-          "ką" => $root . "jų",
-          "kam" => $root . "jui",
-          "kame" => $root . "juje",
-          "kuo" => $root . "jumi",
-          "o" => $root . "jau"
-        ),
-        "plural" => array(
-          "kas" => $root . "jūs",
-          "ko" => $root . "jų",
-          "ką" => $root . "jus",
-          "kam" => $root . "jams",
-          "kame" => $root . "juose",
-          "kuo" => $root . "jais",
-          "o" => $root . "jūs"
+          "kas" => $root . $this->_regularEndings[$ending]["plural"]["kas"],
+          "ko" => $root . $this->_regularEndings[$ending]["plural"]["ko"],
+          "ką" => $root . $this->_regularEndings[$ending]["plural"]["ką"],
+          "kam" => $root . $this->_regularEndings[$ending]["plural"]["kam"],
+          "kame" => $root . $this->_regularEndings[$ending]["plural"]["kame"],
+          "kuo" => $root . $this->_regularEndings[$ending]["plural"]["kuo"],
+          "o" => $root . $this->_regularEndings[$ending]["plural"]["o"],
         )
       );
   }
@@ -835,92 +790,92 @@ class LtNouns
 
       if (preg_match('/(.*)jas$/', $noun, $matches)) {
           $root = $matches[1];
-          return $this->generateDeclensionsForJas($root);
+          return $this->getRegularDeclensions($root, "jas");
       }
 
       if (preg_match('/(.*)ias$/', $noun, $matches)) {
           $root = $matches[1];
-          return $this->generateDeclensionsForIas($root);
+          return $this->getRegularDeclensions($root, "ias");
       }
 
       if (preg_match('/(.*)as$/', $noun, $matches)) {
           $root = $matches[1];
-          return $this->generateDeclensionsForAs($root);
+          return $this->getRegularDeclensions($root, "as");
       }
 
       if (preg_match('/(.*)a$/', $noun, $matches)) {
           $root = $matches[1];
-          return $this->generateDeclensionsForA($root);
+          return $this->getRegularDeclensions($root, "a");
       }
       
       if (preg_match('/(.*)dė$/', $noun, $matches)) {
           $root = $matches[1];
-          return $this->generateDeclensionsForDe($root);
+          return $this->getRegularDeclensions($root, "de");
       }
 
       if (preg_match('/(.*)tė$/', $noun, $matches)) {
           $root = $matches[1];
-          return $this->generateDeclensionsForTe($root);
+          return $this->getRegularDeclensions($root, "te");
       }
 
       if (preg_match('/(.*)ė$/', $noun, $matches)) {
           $root = $matches[1];
-          return $this->generateDeclensionsForE($root);
+          return $this->getRegularDeclensions($root, "e");
       }
 
       if (preg_match('/(.*)ius$/', $noun, $matches)) {
           $root = $matches[1];
-          return $this->generateDeclensionsForIus($root);
+          return $this->getRegularDeclensions($root, "ius");
       }
 
       if (preg_match('/(.*)jus$/', $noun, $matches)) {
           $root = $matches[1];
-          return $this->generateDeclensionsForJus($root);
+          return $this->getRegularDeclensions($root, "jus");
       }
 
       if (preg_match('/(.*)us$/', $noun, $matches)) {
           $root = $matches[1];
-          return $this->generateDeclensionsForUs($root);
+          return $this->getRegularDeclensions($root, "us");
       }
 
       if (preg_match('/(.*)dis$/', $noun, $matches)) {
           $root = $matches[1];
-          return $this->generateDeclensionsForDis($root);
+          return $this->getRegularDeclensions($root, "dis");
       }
       
       if (preg_match('/(.*)tis$/', $noun, $matches)) {
           $root = $matches[1];
-          return $this->generateDeclensionsForTis($root);
+          return $this->getRegularDeclensions($root, "tis");
       }
 
       if (preg_match('/(.*)jis$/', $noun, $matches)) {
           $root = $matches[1];
-          return $this->generateDeclensionsForJis($root);
+          return $this->getRegularDeclensions($root, "jis");
       }
 
       if (preg_match('/(.*)is$/', $noun, $matches)) {
           $root = $matches[1];
-          return $this->generateDeclensionsForIs($root);
+          return $this->getRegularDeclensions($root, "is");
       }
 
       if (preg_match('/(.*)dys$/', $noun, $matches)) {
           $root = $matches[1];
-          return $this->generateDeclensionsForDys($root);
+          return $this->getRegularDeclensions($root, "dys");
       }
 
       if (preg_match('/(.*)jys$/', $noun, $matches)) {
           $root = $matches[1];
-          return $this->generateDeclensionsForJys($root);
+          return $this->getRegularDeclensions($root, "jys");
       }
 
       if (preg_match('/(.*)tys$/', $noun, $matches)) {
           $root = $matches[1];
-          return $this->generateDeclensionsForTys($root);
+          return $this->getRegularDeclensions($root, "tys");
       }
 
       if (preg_match('/(.*)ys$/', $noun, $matches)) {
           $root = $matches[1];
-          return $this->generateDeclensionsForYs($root);
+          return $this->getRegularDeclensions($root, "ys");
       }
 
       return "";
