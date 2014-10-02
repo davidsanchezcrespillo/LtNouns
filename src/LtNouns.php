@@ -746,6 +746,30 @@ class LtNouns
         )
       );
   }
+
+  private function generateDeclensionsForZmogus()
+  {
+      return array(
+        "singular" => array(
+          "kas" => "žmogus",
+          "ko" => "žmogaus",
+          "ką" => "žmogų",
+          "kam" => "žmogui",
+          "kame" => "žmoguje",
+          "kuo" => "žmogumi",
+          "o" => "žmogaus"
+        ),
+        "plural" => array(
+          "kas" => "žmonės",
+          "ko" => "žmonių",
+          "ką" => "žmones",
+          "kam" => "žmonėms",
+          "kame" => "žmonėse",
+          "kuo" => "žmonėmis",
+          "o" => "žmonės"
+        )
+      );
+  }
   
   /**
    * Generate all declensions for a given noun of regular type.
@@ -829,7 +853,7 @@ class LtNouns
   public function generateDeclensions($noun)
   {
       //echo "NOUN: $noun\n";
-      $nounToCheck = mb_strtolower($noun, 'UTF-8');
+      $nounToCheck = trim(mb_strtolower($noun, 'UTF-8'));
       
       //echo "NOUN TO CHECK: '$nounToCheck'\n";
       
@@ -851,6 +875,10 @@ class LtNouns
 
       if ($nounToCheck == 'mėnuo') {
           return $this->generateDeclensionsForMenuo();
+      }
+      
+      if ($nounToCheck == 'žmogus') {
+          return $this->generateDeclensionsForZmogus();
       }
 
       if (in_array(LtWordTypes::IRREGULAR_MASCULINE_NOUN, $wordTypes)) {
