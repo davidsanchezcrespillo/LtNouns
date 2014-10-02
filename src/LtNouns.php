@@ -374,6 +374,26 @@ class LtNouns
           "o" => "jūs"
        ),
     ),
+    "ti" => array(
+        "singular" => array(
+          "kas" => "ti",
+          "ko" => "čios",
+          "ką" => "čią",
+          "kam" => "čiai",
+          "kame" => "čioje",
+          "kuo" => "čia",
+          "o" => "ti"
+        ),
+        "plural" => array(
+          "kas" => "čios",
+          "ko" => "čių",
+          "ką" => "čias",
+          "kam" => "čioms",
+          "kame" => "čiose",
+          "kuo" => "čiomis",
+          "o" => "čios"
+       ),
+    ),
   );
 
 
@@ -739,7 +759,7 @@ class LtNouns
       // Possible endings
       $endings = array(
           "jas", "ias", "as", "a", "dė", "tė", "ė", "ius", "jus", "us",
-          "dis", "tis", "jis", "is", "dys", "jys", "tys", "ys"
+          "dis", "tis", "jis", "is", "dys", "jys", "tys", "ys", "ti"
       );
       
       foreach ($endings as $ending) {
