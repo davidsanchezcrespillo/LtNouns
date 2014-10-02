@@ -623,6 +623,69 @@ class LtNouns
     ),
   );
 
+  protected $_particularEndings = array(
+    "šuo" => array(
+        "singular" => array(
+          "kas" => "šuo",
+          "ko" => "šuns",
+          "ką" => "šunį",
+          "kam" => "šuniui",
+          "kame" => "šunyje",
+          "kuo" => "šuniu",
+          "o" => "šunie"
+        ),
+        "plural" => array(
+          "kas" => "šunys",
+          "ko" => "šunų",
+          "ką" => "šunis",
+          "kam" => "šunims",
+          "kame" => "šunyse",
+          "kuo" => "šunimis",
+          "o" => "šunys"
+        )
+     ),
+    "mėnuo" => array(
+        "singular" => array(
+          "kas" => "mėnuo",
+          "ko" => "mėnesio",
+          "ką" => "mėnesį",
+          "kam" => "mėnesiui",
+          "kame" => "mėnesyje",
+          "kuo" => "mėnesiu",
+          "o" => "mėnesi"
+        ),
+        "plural" => array(
+          "kas" => "mėnesiai",
+          "ko" => "mėnesių",
+          "ką" => "mėnesius",
+          "kam" => "mėnesiams",
+          "kame" => "mėnesiuose",
+          "kuo" => "mėnesiais",
+          "o" => "mėnesiai"
+        )
+     ),
+    "žmogus" => array(
+        "singular" => array(
+          "kas" => "žmogus",
+          "ko" => "žmogaus",
+          "ką" => "žmogų",
+          "kam" => "žmogui",
+          "kame" => "žmoguje",
+          "kuo" => "žmogumi",
+          "o" => "žmogaus"
+        ),
+        "plural" => array(
+          "kas" => "žmonės",
+          "ko" => "žmonių",
+          "ką" => "žmones",
+          "kam" => "žmonėms",
+          "kame" => "žmonėse",
+          "kuo" => "žmonėmis",
+          "o" => "žmonės"
+        )
+     ),
+  );
+
   private function getRegularDeclensions($root, $ending)
   {
       return array(
@@ -699,76 +762,9 @@ class LtNouns
       );
   }
 
-  private function generateDeclensionsForMenuo()
+  private function getParticularDeclensions($word)
   {
-      return array(
-        "singular" => array(
-          "kas" => "mėnuo",
-          "ko" => "mėnesio",
-          "ką" => "mėnesį",
-          "kam" => "mėnesiui",
-          "kame" => "mėnesyje",
-          "kuo" => "mėnesiu",
-          "o" => "mėnesi"
-        ),
-        "plural" => array(
-          "kas" => "mėnesiai",
-          "ko" => "mėnesių",
-          "ką" => "mėnesius",
-          "kam" => "mėnesiams",
-          "kame" => "mėnesiuose",
-          "kuo" => "mėnesiais",
-          "o" => "mėnesiai"
-        )
-      );
-  }
-
-  private function generateDeclensionsForSuo()
-  {
-      return array(
-        "singular" => array(
-          "kas" => "šuo",
-          "ko" => "šuns",
-          "ką" => "šunį",
-          "kam" => "šuniui",
-          "kame" => "šunyje",
-          "kuo" => "šuniu",
-          "o" => "šunie"
-        ),
-        "plural" => array(
-          "kas" => "šunys",
-          "ko" => "šunų",
-          "ką" => "šunis",
-          "kam" => "šunims",
-          "kame" => "šunyse",
-          "kuo" => "šunimis",
-          "o" => "šunys"
-        )
-      );
-  }
-
-  private function generateDeclensionsForZmogus()
-  {
-      return array(
-        "singular" => array(
-          "kas" => "žmogus",
-          "ko" => "žmogaus",
-          "ką" => "žmogų",
-          "kam" => "žmogui",
-          "kame" => "žmoguje",
-          "kuo" => "žmogumi",
-          "o" => "žmogaus"
-        ),
-        "plural" => array(
-          "kas" => "žmonės",
-          "ko" => "žmonių",
-          "ką" => "žmones",
-          "kam" => "žmonėms",
-          "kame" => "žmonėse",
-          "kuo" => "žmonėmis",
-          "o" => "žmonės"
-        )
-      );
+      return $this->_particularEndings[$word];
   }
   
   /**
@@ -869,16 +865,12 @@ class LtNouns
       }
       //echo "WORD TYPE: $wordType\n";
 
-      if ($nounToCheck =='šuo') {
-          return $this->generateDeclensionsForSuo();
-      }
-
-      if ($nounToCheck == 'mėnuo') {
-          return $this->generateDeclensionsForMenuo();
-      }
+      $particularWords = array('šuo', 'mėnuo', 'žmogus');
       
-      if ($nounToCheck == 'žmogus') {
-          return $this->generateDeclensionsForZmogus();
+      foreach ($particularWords as $particularWord) {
+          if ($nounToCheck == $particularWord) {
+              return $this->getParticularDeclensions($particularWord);
+          }
       }
 
       if (in_array(LtWordTypes::IRREGULAR_MASCULINE_NOUN, $wordTypes)) {
