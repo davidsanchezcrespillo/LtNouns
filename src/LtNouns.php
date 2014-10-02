@@ -684,6 +684,26 @@ class LtNouns
           "o" => "žmonės"
         )
      ),
+    "petys" => array(
+        "singular" => array(
+          "kas" => "petys",
+          "ko" => "peties",
+          "ką" => "petį",
+          "kam" => "pečiui",
+          "kame" => "petyje",
+          "kuo" => "petimi / pečiu",
+          "o" => "pety"
+        ),
+        "plural" => array(
+          "kas" => "pečiai",
+          "ko" => "pečių",
+          "ką" => "pečius",
+          "kam" => "pečiams",
+          "kame" => "pečiuose",
+          "kuo" => "pečiais",
+          "o" => "pečiai"
+        )
+     ),
   );
 
   private function getRegularDeclensions($root, $ending)
@@ -865,7 +885,7 @@ class LtNouns
       }
       //echo "WORD TYPE: $wordType\n";
 
-      $particularWords = array('šuo', 'mėnuo', 'žmogus');
+      $particularWords = array('šuo', 'mėnuo', 'žmogus', 'petys');
       
       foreach ($particularWords as $particularWord) {
           if ($nounToCheck == $particularWord) {
