@@ -820,7 +820,7 @@ class LtNouns
       $endings = array(
           "ukas", "jas", "ias", "as", "a", "dė", "tė", "ė",
           "ius", "jus", "us", "dis", "tis", "jis", "is",
-          "dys", "jys", "tys", "ys"
+          "dys", "jys", "tys", "ys", "ti"
       );
       
       foreach ($endings as $ending) {
