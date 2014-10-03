@@ -394,6 +394,26 @@ class LtNouns
           "o" => "jūs"
        ),
     ),
+    "ti" => array(
+        "singular" => array(
+          "kas" => "ti",
+          "ko" => "čios",
+          "ką" => "čią",
+          "kam" => "čiai",
+          "kame" => "čioje",
+          "kuo" => "čia",
+          "o" => "ti"
+        ),
+        "plural" => array(
+          "kas" => "čios",
+          "ko" => "čių",
+          "ką" => "čias",
+          "kam" => "čioms",
+          "kame" => "čiose",
+          "kuo" => "čiomis",
+          "o" => "čios"
+       ),
+    ),
   );
 
 
@@ -623,6 +643,89 @@ class LtNouns
     ),
   );
 
+  protected $_particularEndings = array(
+    "šuo" => array(
+        "singular" => array(
+          "kas" => "šuo",
+          "ko" => "šuns",
+          "ką" => "šunį",
+          "kam" => "šuniui",
+          "kame" => "šunyje",
+          "kuo" => "šuniu",
+          "o" => "šunie"
+        ),
+        "plural" => array(
+          "kas" => "šunys",
+          "ko" => "šunų",
+          "ką" => "šunis",
+          "kam" => "šunims",
+          "kame" => "šunyse",
+          "kuo" => "šunimis",
+          "o" => "šunys"
+        )
+     ),
+    "mėnuo" => array(
+        "singular" => array(
+          "kas" => "mėnuo",
+          "ko" => "mėnesio",
+          "ką" => "mėnesį",
+          "kam" => "mėnesiui",
+          "kame" => "mėnesyje",
+          "kuo" => "mėnesiu",
+          "o" => "mėnesi"
+        ),
+        "plural" => array(
+          "kas" => "mėnesiai",
+          "ko" => "mėnesių",
+          "ką" => "mėnesius",
+          "kam" => "mėnesiams",
+          "kame" => "mėnesiuose",
+          "kuo" => "mėnesiais",
+          "o" => "mėnesiai"
+        )
+     ),
+    "žmogus" => array(
+        "singular" => array(
+          "kas" => "žmogus",
+          "ko" => "žmogaus",
+          "ką" => "žmogų",
+          "kam" => "žmogui",
+          "kame" => "žmoguje",
+          "kuo" => "žmogumi",
+          "o" => "žmogaus"
+        ),
+        "plural" => array(
+          "kas" => "žmonės",
+          "ko" => "žmonių",
+          "ką" => "žmones",
+          "kam" => "žmonėms",
+          "kame" => "žmonėse",
+          "kuo" => "žmonėmis",
+          "o" => "žmonės"
+        )
+     ),
+    "petys" => array(
+        "singular" => array(
+          "kas" => "petys",
+          "ko" => "peties",
+          "ką" => "petį",
+          "kam" => "pečiui",
+          "kame" => "petyje",
+          "kuo" => "petimi / pečiu",
+          "o" => "pety"
+        ),
+        "plural" => array(
+          "kas" => "pečiai",
+          "ko" => "pečių",
+          "ką" => "pečius",
+          "kam" => "pečiams",
+          "kame" => "pečiuose",
+          "kuo" => "pečiais",
+          "o" => "pečiai"
+        )
+     ),
+  );
+
   private function getRegularDeclensions($root, $ending)
   {
       return array(
@@ -699,52 +802,9 @@ class LtNouns
       );
   }
 
-  private function generateDeclensionsForMenuo()
+  private function getParticularDeclensions($word)
   {
-      return array(
-        "singular" => array(
-          "kas" => "mėnuo",
-          "ko" => "mėnesio",
-          "ką" => "mėnesį",
-          "kam" => "mėnesiui",
-          "kame" => "mėnesyje",
-          "kuo" => "mėnesiu",
-          "o" => "mėnesi"
-        ),
-        "plural" => array(
-          "kas" => "mėnesiai",
-          "ko" => "mėnesių",
-          "ką" => "mėnesius",
-          "kam" => "mėnesiams",
-          "kame" => "mėnesiuose",
-          "kuo" => "mėnesiais",
-          "o" => "mėnesiai"
-        )
-      );
-  }
-
-  private function generateDeclensionsForSuo()
-  {
-      return array(
-        "singular" => array(
-          "kas" => "šuo",
-          "ko" => "šuns",
-          "ką" => "šunį",
-          "kam" => "šuniui",
-          "kame" => "šunyje",
-          "kuo" => "šuniu",
-          "o" => "šunie"
-        ),
-        "plural" => array(
-          "kas" => "šunys",
-          "ko" => "šunų",
-          "ką" => "šunis",
-          "kam" => "šunims",
-          "kame" => "šunyse",
-          "kuo" => "šunimis",
-          "o" => "šunys"
-        )
-      );
+      return $this->_particularEndings[$word];
   }
   
   /**
@@ -830,7 +890,7 @@ class LtNouns
   public function generateDeclensions($noun)
   {
       //echo "NOUN: $noun\n";
-      $nounToCheck = mb_strtolower($noun, 'UTF-8');
+      $nounToCheck = trim(mb_strtolower($noun, 'UTF-8'));
       
       //echo "NOUN TO CHECK: '$nounToCheck'\n";
       
@@ -846,12 +906,12 @@ class LtNouns
       }
       //echo "WORD TYPE: $wordType\n";
 
-      if ($nounToCheck =='šuo') {
-          return $this->generateDeclensionsForSuo();
-      }
-
-      if ($nounToCheck == 'mėnuo') {
-          return $this->generateDeclensionsForMenuo();
+      $particularWords = array('šuo', 'mėnuo', 'žmogus', 'petys');
+      
+      foreach ($particularWords as $particularWord) {
+          if ($nounToCheck == $particularWord) {
+              return $this->getParticularDeclensions($particularWord);
+          }
       }
 
       if (in_array(LtWordTypes::IRREGULAR_MASCULINE_NOUN, $wordTypes)) {
