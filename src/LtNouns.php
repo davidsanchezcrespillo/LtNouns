@@ -114,6 +114,26 @@ class LtNouns
           "o" => "ai"
         ),
     ),
+    "ukas" => array(
+        "singular" => array(
+          "kas" => "ukas",
+          "ko" => "uko",
+          "ką" => "uką",
+          "kam" => "ukui",
+          "kame" => "uke",
+          "kuo" => "uku",
+          "o" => "uk"
+        ),
+        "plural" => array(
+          "kas" => "ukai",
+          "ko" => "ukų",
+          "ką" => "ukus",
+          "kam" => "ukams",
+          "kame" => "ukuose",
+          "kuo" => "ukais",
+          "o" => "ukai"
+        ),
+    ),
     "ias" => array(
         "singular" => array(
           "kas" => "ias",
@@ -738,8 +758,9 @@ class LtNouns
   {
       // Possible endings
       $endings = array(
-          "jas", "ias", "as", "a", "dė", "tė", "ė", "ius", "jus", "us",
-          "dis", "tis", "jis", "is", "dys", "jys", "tys", "ys"
+          "ukas", "jas", "ias", "as", "a", "dė", "tė", "ė",
+          "ius", "jus", "us", "dis", "tis", "jis", "is",
+          "dys", "jys", "tys", "ys"
       );
       
       foreach ($endings as $ending) {
@@ -845,7 +866,7 @@ class LtNouns
           return $this->generateRegularDeclensions($nounToCheck);
       }
       
-      return "";
+      return $this->generateRegularDeclensions($nounToCheck);
   }
   
   public function __construct(LtWordTypes $ltWordTypes)
