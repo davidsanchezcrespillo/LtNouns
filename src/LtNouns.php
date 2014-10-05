@@ -894,7 +894,14 @@ class LtNouns
       
       //echo "NOUN TO CHECK: '$nounToCheck'\n";
       
-      $wordTypes = $this->_wordTypes->getWordType($nounToCheck);
+      $retrievedTypes = $this->_wordTypes->getWordType($nounToCheck);
+      if (isset($retrievedTypes['word'])) {
+        $nounToCheck = $retrievedTypes['word'];
+      }
+      $wordTypes = array();
+      if (isset($retrievedTypes['type'])) {
+        $wordTypes = $retrievedTypes['type'];
+      }
       
       // Get the "hardship flag" for certain types of nouns
       $hardshipFlag = "hard";
