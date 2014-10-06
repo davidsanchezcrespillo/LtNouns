@@ -895,7 +895,7 @@ class LtNouns
       //echo "NOUN TO CHECK: '$nounToCheck'\n";
       
       $retrievedTypes = $this->_wordTypes->getWordType($nounToCheck);
-      if (isset($retrievedTypes['word'])) {
+      if (isset($retrievedTypes['word']) && $retrievedTypes['word'] != '') {
         $nounToCheck = $retrievedTypes['word'];
       }
       $wordTypes = array();
