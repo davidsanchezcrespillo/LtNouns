@@ -10,6 +10,10 @@ use LtWords\LtWordTypes\LtWordTypes;
  */
 class LtNouns
 {
+  const NOUN_NOT_FOUND = -1;
+  const NOUN_FOUND = 0;
+  const NOUN_DIFFERENT = 1;
+
   // Service to get the word type for a given noun
   protected $_wordTypes;
 
@@ -895,9 +899,18 @@ class LtNouns
       //echo "NOUN TO CHECK: '$nounToCheck'\n";
       
       $retrievedTypes = $this->_wordTypes->getWordType($nounToCheck);
+      
+      $status = self::NOUN_NOT_FOUND;
+
       if (isset($retrievedTypes['word']) && $retrievedTypes['word'] != '') {
+        if ($retrievedTypes['word'] == $nounToCheck) {
+            $status = self::NOUN_FOUND;
+        } else {
+            $status = self::NOUN_DIFFERENT;
+        }
         $nounToCheck = $retrievedTypes['word'];
       }
+
       $wordTypes = array();
       if (isset($retrievedTypes['type'])) {
         $wordTypes = $retrievedTypes['type'];
@@ -915,25 +928,36 @@ class LtNouns
 
       $particularWords = array('šuo', 'mėnuo', 'žmogus', 'petys');
       
+      $declensions = "";
+
       foreach ($particularWords as $particularWord) {
           if ($nounToCheck == $particularWord) {
-              return $this->getParticularDeclensions($particularWord);
+              $declensions = $this->getParticularDeclensions($particularWord);
+              break;
           }
       }
 
-      if (in_array(LtWordTypes::IRREGULAR_MASCULINE_NOUN, $wordTypes)) {
-          return $this->generateVDeclensions($nounToCheck, $hardshipFlag);
+      if (!is_array($declensions)) {
+        if (in_array(LtWordTypes::IRREGULAR_MASCULINE_NOUN, $wordTypes)) {
+          $declensions = $this->generateVDeclensions(
+              $nounToCheck, $hardshipFlag
+          );
+        } elseif (in_array(LtWordTypes::IRREGULAR_FEMENINE_NOUN, $wordTypes)) {
+          $declensions = $this->generateMDeclensions(
+              $nounToCheck, $hardshipFlag
+          );
+        } elseif (in_array(LtWordTypes::REGULAR_NOUN, $wordTypes)) {
+          $declensions = $this->generateRegularDeclensions($nounToCheck);
+        } else {
+          $declensions = $this->generateRegularDeclensions($nounToCheck);
+        }
       }
       
-      if (in_array(LtWordTypes::IRREGULAR_FEMENINE_NOUN, $wordTypes)) {
-          return $this->generateMDeclensions($nounToCheck, $hardshipFlag);
-      }
-      
-      if (in_array(LtWordTypes::REGULAR_NOUN, $wordTypes)) {
-          return $this->generateRegularDeclensions($nounToCheck);
-      }
-      
-      return $this->generateRegularDeclensions($nounToCheck);
+      return array(
+          "status" => $status,
+          "word" => $nounToCheck,
+          "declensions" => $declensions
+      );
   }
   
   public function __construct(LtWordTypes $ltWordTypes)

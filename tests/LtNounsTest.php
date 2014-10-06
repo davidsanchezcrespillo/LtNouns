@@ -21,11 +21,11 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
   
   public function testBasic()
   {
-      $this->assertEquals("", $this->_ltNouns->generateDeclensions(""));
+      $this->assertEquals("", $this->_ltNouns->generateDeclensions("")["declensions"]);
   }
   
   public function testAs() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("vyras");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("vyras")["declensions"];
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
       $this->assertInternalType('array', $asDeclensions['plural']);
@@ -48,7 +48,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
   }
 
   public function testAsMissing() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("žaidimas");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("žaidimas")["declensions"];
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
       $this->assertInternalType('array', $asDeclensions['plural']);
@@ -72,7 +72,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
 
 
   public function testUkas() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("berniukas");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("berniukas")["declensions"];
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
       $this->assertInternalType('array', $asDeclensions['plural']);
@@ -95,7 +95,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
   }
 
   public function testIas() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("kelias");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("kelias")["declensions"];
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
       $this->assertInternalType('array', $asDeclensions['plural']);
@@ -118,7 +118,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
   }
 
   public function testJas() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("vėjas");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("vėjas")["declensions"];
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
       $this->assertInternalType('array', $asDeclensions['plural']);
@@ -141,7 +141,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
   }
 
   public function testA() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("knyga");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("knyga")["declensions"];
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
       $this->assertInternalType('array', $asDeclensions['plural']);
@@ -164,7 +164,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
   }
 
   public function testE() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("varškė");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("varškė")["declensions"];
 
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
@@ -188,7 +188,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
   }
 
   public function testTe() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("katė");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("katė")["declensions"];
 
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
@@ -210,7 +210,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
       $this->assertEquals('katėmis', $asDeclensions['plural']['kuo']);
       $this->assertEquals('katės', $asDeclensions['plural']['o']);
 
-      $asDeclensions = $this->_ltNouns->generateDeclensions("katĖ");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("katĖ")["declensions"];
 
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
@@ -234,7 +234,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
   }
 
   public function testDe() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("kėdė");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("kėdė")["declensions"];
 
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
@@ -258,7 +258,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
   }
 
   public function testUs() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("alus");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("alus")["declensions"];
 
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
@@ -282,7 +282,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
   }
 
   public function testJus() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("pavojus");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("pavojus")["declensions"];
 
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
@@ -306,7 +306,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
   }
 
   public function testIus() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("amžius");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("amžius")["declensions"];
 
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
@@ -330,7 +330,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
   }
   
   public function testIs() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("brolis");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("brolis")["declensions"];
 
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
@@ -354,7 +354,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
   }  
 
   public function testDis() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("medis");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("medis")["declensions"];
 
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
@@ -378,7 +378,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
   } 
 
   public function testTis() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("dangtis");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("dangtis")["declensions"];
 
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
@@ -402,7 +402,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
   } 
 
   public function testJis() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("atvejis");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("atvejis")["declensions"];
 
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
@@ -426,7 +426,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
   } 
 
   public function testYs() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("arklys");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("arklys")["declensions"];
 
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
@@ -450,7 +450,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
   }  
 
   public function testDys() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("vyzdys");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("vyzdys")["declensions"];
 
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
@@ -474,7 +474,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
   }  
 
   public function testJys() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("žvejys");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("žvejys")["declensions"];
 
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
@@ -498,7 +498,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
   } 
 
   public function testTys() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("žaltys");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("žaltys")["declensions"];
 
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
@@ -522,7 +522,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
   } 
 
   public function testTi() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("pati");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("pati")["declensions"];
 
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
@@ -546,7 +546,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
   } 
 
   public function testVTis() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("dantis");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("dantis")["declensions"];
 
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
@@ -570,7 +570,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
   } 
 
   public function testVIs() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("debesis");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("debesis")["declensions"];
 
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
@@ -594,7 +594,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
   } 
 
   public function testVUo() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("vanduo");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("vanduo")["declensions"];
 
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
@@ -618,7 +618,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
   } 
 
   public function testMTis() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("naktis");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("naktis")["declensions"];
 
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
@@ -642,7 +642,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
   } 
 
   public function testMDis() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("širdis");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("širdis")["declensions"];
 
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
@@ -666,7 +666,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
   } 
   
   public function testMIs() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("krosnis");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("krosnis")["declensions"];
 
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
@@ -690,7 +690,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
   }   
 
   public function testMYs() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("durys");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("durys")["declensions"];
 
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
@@ -714,7 +714,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
   }
 
   public function testMTys() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("sultys");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("sultys")["declensions"];
 
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
@@ -738,7 +738,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
   }
 
   public function testMUo() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("sesuo");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("sesuo")["declensions"];
 
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
@@ -762,7 +762,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
   } 
 
   public function testME() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("duktė");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("duktė")["declensions"];
 
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
@@ -786,7 +786,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
   } 
 
   public function testZmogus() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("žmogus");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("žmogus")["declensions"];
 
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
@@ -811,7 +811,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
 
 
   public function testSuo() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("šuo");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("šuo")["declensions"];
 
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
@@ -836,7 +836,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
 
 
   public function testMenuo() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("mėnuo");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("mėnuo")["declensions"];
 
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
@@ -860,7 +860,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
   } 
 
   public function testPetys() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("petys");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("petys")["declensions"];
 
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
@@ -884,7 +884,7 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
   } 
 
   public function testVIsK() {
-      $asDeclensions = $this->_ltNouns->generateDeclensions("ausis");
+      $asDeclensions = $this->_ltNouns->generateDeclensions("ausis")["declensions"];
 
       $this->assertInternalType('array', $asDeclensions);
       $this->assertInternalType('array', $asDeclensions['singular']);
