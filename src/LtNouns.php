@@ -418,6 +418,26 @@ class LtNouns
           "o" => "čios"
        ),
     ),
+    "ai" => array(
+        "singular" => array(
+          "kas" => "",
+          "ko" => "",
+          "ką" => "",
+          "kam" => "",
+          "kame" => "",
+          "kuo" => "",
+          "o" => ""
+        ),
+        "plural" => array(
+          "kas" => "ai",
+          "ko" => "ų",
+          "ką" => "us",
+          "kam" => "ams",
+          "kame" => "uose",
+          "kuo" => "ais",
+          "o" => "ai"
+       ),
+    ),
   );
 
 
@@ -732,15 +752,27 @@ class LtNouns
 
   private function getRegularDeclensions($root, $ending)
   {
+      $singRoot = $root;
+      if ($this->_regularEndings[$ending]["singular"]["kas"] == "") {
+          $singRoot = "";
+      }
+
       return array(
         "singular" => array(
-          "kas" => $root . $this->_regularEndings[$ending]["singular"]["kas"],
-          "ko" => $root . $this->_regularEndings[$ending]["singular"]["ko"],
-          "ką" => $root . $this->_regularEndings[$ending]["singular"]["ką"],
-          "kam" => $root . $this->_regularEndings[$ending]["singular"]["kam"],
-          "kame" => $root . $this->_regularEndings[$ending]["singular"]["kame"],
-          "kuo" => $root . $this->_regularEndings[$ending]["singular"]["kuo"],
-          "o" => $root . $this->_regularEndings[$ending]["singular"]["o"],
+          "kas" =>
+            $singRoot . $this->_regularEndings[$ending]["singular"]["kas"],
+          "ko" =>
+            $singRoot . $this->_regularEndings[$ending]["singular"]["ko"],
+          "ką" =>
+            $singRoot . $this->_regularEndings[$ending]["singular"]["ką"],
+          "kam" =>
+            $singRoot . $this->_regularEndings[$ending]["singular"]["kam"],
+          "kame" =>
+            $singRoot . $this->_regularEndings[$ending]["singular"]["kame"],
+          "kuo" =>
+            $singRoot . $this->_regularEndings[$ending]["singular"]["kuo"],
+          "o" =>
+            $singRoot . $this->_regularEndings[$ending]["singular"]["o"],
         ),
         "plural" => array(
           "kas" => $root . $this->_regularEndings[$ending]["plural"]["kas"],
@@ -824,7 +856,7 @@ class LtNouns
       $endings = array(
           "ukas", "jas", "ias", "as", "a", "dė", "tė", "ė",
           "ius", "jus", "us", "dis", "tis", "jis", "is",
-          "dys", "jys", "tys", "ys", "ti"
+          "dys", "jys", "tys", "ys", "ti", "ai"
       );
       
       foreach ($endings as $ending) {
