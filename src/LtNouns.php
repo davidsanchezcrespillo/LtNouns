@@ -1008,6 +1008,7 @@ class LtNouns
       return array(
           "status" => $status,
           "word" => $nounToCheck,
+          "retrieved" => $retrievedTypes['word'],
           "declensions" => $declensions
       );
   }
