@@ -954,7 +954,8 @@ class LtNouns
       $status = self::NOUN_NOT_FOUND;
 
       if (isset($retrievedTypes['word']) && $retrievedTypes['word'] != '') {
-        if ($retrievedTypes['word'] == $nounToCheck) {
+        $retrievedLowercase = mb_strtolower($retrievedTypes['word'], 'UTF-8');
+        if ($retrievedLowercase == $nounToCheck) {
             $status = self::NOUN_FOUND;
         } else {
             $status = self::NOUN_DIFFERENT;
@@ -1012,14 +1013,18 @@ class LtNouns
   }
 
   /**
-   * Wrapper function to call the underlying method from the LtWordTypes service.
+   * Wrapper function to call the underlying method from LtWordTypes.
    * @param string $wordPrefix the word prefix
    * @return array the list of suggestions
    */  
   public function suggestNoun($wordPrefix)
   {
-      $flags = array("D", "K", "I", "M", "V");
+      // Short prefixes give really long lists
+      if (strlen($wordPrefix) < 3) {
+          return array();
+      }
 
+      $flags = array("D", "K", "I", "M", "V");
       return $this->_wordTypes->getSuggestions($wordPrefix, $flags);
   }
   
