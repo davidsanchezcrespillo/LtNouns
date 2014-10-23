@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/davidsanchezcrespillo/LtWordTypes.git",
-                "reference": "3dab1d6c1c4b9158e286fe551b9a95c5932f14fe"
+                "reference": "f52979a8ed995765bb2cdcef0f3a4bf828e94dfc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/davidsanchezcrespillo/LtWordTypes/zipball/3dab1d6c1c4b9158e286fe551b9a95c5932f14fe",
-                "reference": "3dab1d6c1c4b9158e286fe551b9a95c5932f14fe",
+                "url": "https://api.github.com/repos/davidsanchezcrespillo/LtWordTypes/zipball/f52979a8ed995765bb2cdcef0f3a4bf828e94dfc",
+                "reference": "f52979a8ed995765bb2cdcef0f3a4bf828e94dfc",
                 "shasum": ""
             },
             "require-dev": {
@@ -45,7 +45,7 @@
             "keywords": [
                 "Lithuanian"
             ],
-            "time": "2014-10-23 09:25:38"
+            "time": "2014-10-23 12:35:48"
         }
     ],
     "packages-dev": [

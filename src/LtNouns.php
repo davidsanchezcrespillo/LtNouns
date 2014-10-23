@@ -458,6 +458,26 @@ class LtNouns
           "o" => "os"
         ),
     ),
+    "ės" => array(
+        "singular" => array(
+          "kas" => "",
+          "ko" => "",
+          "ką" => "",
+          "kam" => "",
+          "kame" => "",
+          "kuo" => "",
+          "o" => ""
+        ),
+        "plural" => array(
+          "kas" => "ės",
+          "ko" => "ių",
+          "ką" => "es",
+          "kam" => "ėms",
+          "kame" => "ėse",
+          "kuo" => "ėmis",
+          "o" => "ės"
+        ),
+    ),
   );
 
   protected $_vEndings = array(
@@ -875,7 +895,7 @@ class LtNouns
       $endings = array(
           "ukas", "jas", "ias", "as", "a", "dė", "tė", "ė",
           "ius", "jus", "us", "dis", "tis", "jis", "is",
-          "dys", "jys", "tys", "ys", "ti", "ai", "os"
+          "dys", "jys", "tys", "ys", "ti", "ai", "os", "ės"
       );
       
       foreach ($endings as $ending) {
