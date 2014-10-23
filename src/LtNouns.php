@@ -1010,7 +1010,23 @@ class LtNouns
           "declensions" => $declensions
       );
   }
+
+  /**
+   * Wrapper function to call the underlying method from the LtWordTypes service.
+   * @param string $wordPrefix the word prefix
+   * @return array the list of suggestions
+   */  
+  public function suggestNoun($wordPrefix)
+  {
+      $flags = array("D", "K", "I", "M", "V");
+
+      return $this->_wordTypes->getSuggestions($wordPrefix, $flags);
+  }
   
+  /**
+   * Constructor.
+   * @param LtWordTypes $ltWordTypes the underlying service
+   */
   public function __construct(LtWordTypes $ltWordTypes)
   {
       $this->_wordTypes = $ltWordTypes;
