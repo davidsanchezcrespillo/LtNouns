@@ -107,13 +107,13 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
       $this->assertEquals('', $asDeclensions['singular']['kuo']);
       $this->assertEquals('', $asDeclensions['singular']['o']);
 
-      $this->assertEquals('varnos', $asDeclensions['plural']['kas']);
-      $this->assertEquals('varnų', $asDeclensions['plural']['ko']);
-      $this->assertEquals('varnas', $asDeclensions['plural']['ką']);
-      $this->assertEquals('varnoms', $asDeclensions['plural']['kam']);
-      $this->assertEquals('varnose', $asDeclensions['plural']['kame']);
-      $this->assertEquals('varnomis', $asDeclensions['plural']['kuo']);
-      $this->assertEquals('varnos', $asDeclensions['plural']['o']);
+      $this->assertEquals('Varnos', $asDeclensions['plural']['kas']);
+      $this->assertEquals('Varnų', $asDeclensions['plural']['ko']);
+      $this->assertEquals('Varnas', $asDeclensions['plural']['ką']);
+      $this->assertEquals('Varnoms', $asDeclensions['plural']['kam']);
+      $this->assertEquals('Varnose', $asDeclensions['plural']['kame']);
+      $this->assertEquals('Varnomis', $asDeclensions['plural']['kuo']);
+      $this->assertEquals('Varnos', $asDeclensions['plural']['o']);
   }
 
 
