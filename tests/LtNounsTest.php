@@ -47,6 +47,15 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
       $this->assertEquals('vyrai', $asDeclensions['plural']['o']);
   }
 
+  public function testAsProper() {
+      $asDeclensions = $this->_ltNouns->generateDeclensions("Mykolas")["declensions"];
+      $this->assertInternalType('array', $asDeclensions);
+      $this->assertInternalType('array', $asDeclensions['singular']);
+      $this->assertInternalType('array', $asDeclensions['plural']);
+      
+      $this->assertEquals('Mykolai', $asDeclensions['singular']['o']);
+  }
+
   public function testAsMissing() {
       $asDeclensions = $this->_ltNouns->generateDeclensions("žaidimas")["declensions"];
       $this->assertInternalType('array', $asDeclensions);

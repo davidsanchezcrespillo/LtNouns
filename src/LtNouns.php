@@ -789,6 +789,24 @@ class LtNouns
      ),
   );
 
+  private function startsWithUpperCase($string)
+  {
+      $encoding = 'UTF-8';
+      if (mb_strlen($string, $encoding) == 0) {
+          return false;
+      }
+      
+      $firstChar = mb_substr($string, 0, 1, $encoding);
+      
+      $upperFirstChar = mb_strtoupper($firstChar, $encoding);
+      
+      if ($firstChar == $upperFirstChar) {
+          return true;
+      }
+      
+      return false;
+  }
+
   private function getRegularDeclensions($root, $ending)
   {
       $singRoot = $root;
@@ -796,7 +814,7 @@ class LtNouns
           $singRoot = "";
       }
 
-      return array(
+      $result = array(
         "singular" => array(
           "kas" =>
             $singRoot . $this->_regularEndings[$ending]["singular"]["kas"],
@@ -823,6 +841,16 @@ class LtNouns
           "o" => $root . $this->_regularEndings[$ending]["plural"]["o"],
         )
       );
+
+      // PATCHY: Consider the special vocative form for proper nouns.
+
+      if ($this->startsWithUpperCase($root)) {
+          if (strlen($singRoot) > 0) {
+              $result["singular"]["o"] = $singRoot . "ai";
+          }
+      }
+
+      return $result;
   }
 
   private function getVDeclensions($root, $ending, $hardship)
