@@ -807,6 +807,16 @@ class LtNouns
       return false;
   }
 
+  function endsWith($haystack, $needle)
+  {
+    $length = strlen($needle);
+    if ($length == 0) {
+        return true;
+    }
+
+    return (substr($haystack, -$length) === $needle);
+  }      
+
   private function getRegularDeclensions($root, $ending)
   {
       $singRoot = $root;
@@ -844,7 +854,7 @@ class LtNouns
 
       // PATCHY: Consider the special vocative form for proper nouns.
 
-      if ($this->startsWithUpperCase($root)) {
+      if ($this->endsWith($ending, 'as') && $this->startsWithUpperCase($root)) {
           if (strlen($singRoot) > 0) {
               $result["singular"]["o"] = $singRoot . "ai";
           }

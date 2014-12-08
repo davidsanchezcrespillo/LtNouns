@@ -171,6 +171,16 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
       $this->assertEquals('berniukai', $asDeclensions['plural']['o']);
   }
 
+  public function testUkasProper() {
+      $asDeclensions = $this->_ltNouns->generateDeclensions("Mykoliukas")["declensions"];
+      $this->assertInternalType('array', $asDeclensions);
+      $this->assertInternalType('array', $asDeclensions['singular']);
+      $this->assertInternalType('array', $asDeclensions['plural']);
+      
+      // The word is not in the dictionary, that is why it appears in lowercase
+      $this->assertEquals('mykoliuk', $asDeclensions['singular']['o']);
+  }
+
   public function testIas() {
       $asDeclensions = $this->_ltNouns->generateDeclensions("kelias")["declensions"];
       $this->assertInternalType('array', $asDeclensions);
@@ -334,6 +344,16 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
       $this->assertEquals('kėdės', $asDeclensions['plural']['o']);
   }
 
+  public function testDeProper() {
+      $asDeclensions = $this->_ltNouns->generateDeclensions("Tautvydė")["declensions"];
+
+      $this->assertInternalType('array', $asDeclensions);
+      $this->assertInternalType('array', $asDeclensions['singular']);
+      $this->assertInternalType('array', $asDeclensions['plural']);
+      
+      $this->assertEquals('Tautvyde', $asDeclensions['singular']['o']);
+  }
+  
   public function testUs() {
       $asDeclensions = $this->_ltNouns->generateDeclensions("alus")["declensions"];
 
