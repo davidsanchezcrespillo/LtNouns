@@ -450,6 +450,30 @@ class LtNounsTest extends PHPUnit_Framework_TestCase
       $this->assertEquals('broliai', $asDeclensions['plural']['o']);
   }  
 
+  public function testNosis() {
+      $asDeclensions = $this->_ltNouns->generateDeclensions("nosis")["declensions"];
+
+      $this->assertInternalType('array', $asDeclensions);
+      $this->assertInternalType('array', $asDeclensions['singular']);
+      $this->assertInternalType('array', $asDeclensions['plural']);
+      
+      $this->assertEquals('nosis', $asDeclensions['singular']['kas']);
+      $this->assertEquals('nosies', $asDeclensions['singular']['ko']);
+      $this->assertEquals('nosį', $asDeclensions['singular']['ką']);
+      $this->assertEquals('nosiai', $asDeclensions['singular']['kam']);
+      $this->assertEquals('nosyje', $asDeclensions['singular']['kame']);
+      $this->assertEquals('nosimi', $asDeclensions['singular']['kuo']);
+      $this->assertEquals('nosie', $asDeclensions['singular']['o']);
+
+      $this->assertEquals('nosys', $asDeclensions['plural']['kas']);
+      $this->assertEquals('nosių', $asDeclensions['plural']['ko']);
+      $this->assertEquals('nosis', $asDeclensions['plural']['ką']);
+      $this->assertEquals('nosims', $asDeclensions['plural']['kam']);
+      $this->assertEquals('nosyse', $asDeclensions['plural']['kame']);
+      $this->assertEquals('nosimis', $asDeclensions['plural']['kuo']);
+      $this->assertEquals('nosys', $asDeclensions['plural']['o']);
+  }  
+
   public function testDis() {
       $asDeclensions = $this->_ltNouns->generateDeclensions("medis")["declensions"];
 

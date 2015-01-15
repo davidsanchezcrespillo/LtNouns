@@ -1048,12 +1048,12 @@ class LtNouns
       }
 
       if (!is_array($declensions)) {
-        if (in_array(LtWordTypes::IRREGULAR_MASCULINE_NOUN, $wordTypes)) {
-          $declensions = $this->generateVDeclensions(
+        if (in_array(LtWordTypes::IRREGULAR_FEMENINE_NOUN, $wordTypes)) {
+          $declensions = $this->generateMDeclensions(
               $nounToCheck, $hardshipFlag
           );
-        } elseif (in_array(LtWordTypes::IRREGULAR_FEMENINE_NOUN, $wordTypes)) {
-          $declensions = $this->generateMDeclensions(
+        } elseif (in_array(LtWordTypes::IRREGULAR_MASCULINE_NOUN, $wordTypes)) {
+          $declensions = $this->generateVDeclensions(
               $nounToCheck, $hardshipFlag
           );
         } elseif (in_array(LtWordTypes::REGULAR_NOUN, $wordTypes)) {
